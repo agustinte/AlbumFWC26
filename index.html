@@ -6,20 +6,20 @@
     <title>Álbum Mundial 2026 - Oficial 980</title>
     <style>
         :root {
-            --primary: #800020; /* Vino mundialista */
+            --primary: #800020; /* Vino tinto mundialista */
             --primary-light: #9a1f3a;
             --accent: #d4af37; /* Dorado campeón */
-            --bg-page: #f4f5f8;
+            --bg-page: #f8fafc;
             --bg-card: #ffffff;
-            --text-main: #1d1d1f;
-            --text-muted: #6e6e73;
-            --border-color: #e2e8f0;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #cbd5e1;
             --tengo-color: #10b981; /* Verde esmeralda */
             --repetida-color: #f59e0b; /* Ámbar */
             --falta-color: #94a3b8; /* Gris azulado */
-            --radius-lg: 14px;
-            --radius-md: 8px;
-            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --radius-lg: 16px;
+            --radius-md: 10px;
+            --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
@@ -40,34 +40,34 @@
         header {
             background: linear-gradient(135deg, var(--primary) 0%, #4a0012 100%);
             color: white;
-            padding: 30px 20px;
+            padding: 25px 15px;
             text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-            border-bottom: 3px solid var(--accent);
-            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+            border-bottom: 4px solid var(--accent);
+            margin-bottom: 20px;
         }
 
         header h1 {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 800;
             letter-spacing: -0.5px;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             text-transform: uppercase;
         }
 
         header p {
-            font-size: 14px;
+            font-size: 13px;
             opacity: 0.9;
             font-weight: 300;
         }
 
-        /* Panel de Estadísticas */
+        /* --- STREAMING_CHUNK: Estilos del panel de estadísticas --- */
         .stats-banner {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 10px;
             max-width: 900px;
-            margin: -15px auto 25px auto;
+            margin: -10px auto 20px auto;
             padding: 0 15px;
         }
 
@@ -79,53 +79,48 @@
 
         .stat-item {
             background: var(--bg-card);
-            border-radius: var(--radius-lg);
-            padding: 15px;
+            border-radius: var(--radius-md);
+            padding: 12px;
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
-            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.05);
             transition: var(--transition);
         }
 
-        .stat-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-        }
-
         .stat-val {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 800;
             color: var(--primary);
         }
 
         .stat-label {
-            font-size: 11px;
+            font-size: 10px;
             color: var(--text-muted);
             text-transform: uppercase;
-            font-weight: 600;
-            margin-top: 4px;
+            font-weight: 700;
+            margin-top: 2px;
             letter-spacing: 0.5px;
         }
 
-        /* Navegación por pestañas */
+        /* --- STREAMING_CHUNK: Diseño de menú de navegación responsivo --- */
         nav {
             display: flex;
             justify-content: center;
             gap: 6px;
-            margin: 0 auto 25px auto;
+            margin: 0 auto 20px auto;
             max-width: 900px;
             padding: 0 15px;
             overflow-x: auto;
             white-space: nowrap;
-            scrollbar-width: none; /* Firefox */
+            scrollbar-width: none;
         }
 
         nav::-webkit-scrollbar {
-            display: none; /* Safari & Chrome */
+            display: none;
         }
 
         nav button {
-            padding: 12px 18px;
+            padding: 10px 16px;
             font-size: 13px;
             font-weight: 700;
             cursor: pointer;
@@ -134,7 +129,6 @@
             border-radius: 30px;
             color: var(--text-muted);
             transition: var(--transition);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
         }
 
         nav button:hover {
@@ -147,10 +141,10 @@
             background: var(--primary);
             color: white;
             border-color: var(--primary);
-            box-shadow: 0 4px 10px rgba(128, 0, 32, 0.25);
+            box-shadow: 0 4px 10px rgba(128, 0, 32, 0.2);
         }
 
-        /* Contenedores de contenido */
+        /* Contenedor Principal */
         main {
             max-width: 900px;
             margin: 0 auto;
@@ -162,17 +156,17 @@
             background: var(--bg-card);
             padding: 20px;
             border-radius: var(--radius-lg);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            border: 1px solid var(--border-color);
-            animation: fadeIn 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
         .tab-content.active {
             display: block;
+            animation: fadeIn 0.25s ease;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
+            from { opacity: 0; transform: translateY(4px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -185,12 +179,12 @@
             padding-left: 10px;
         }
 
-        /* Controles superiores del álbum */
+        /* --- STREAMING_CHUNK: Estructura de controles del álbum --- */
         .album-header-controls {
             display: flex;
             flex-direction: column;
             gap: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         @media (min-width: 600px) {
@@ -208,10 +202,10 @@
 
         .selector-pais {
             width: 100%;
-            padding: 12px 16px;
-            font-size: 15px;
+            padding: 10px 14px;
+            font-size: 14px;
             font-weight: 600;
-            border: 2px solid var(--border-color);
+            border: 1px solid var(--border-color);
             border-radius: var(--radius-md);
             background-color: var(--bg-card);
             cursor: pointer;
@@ -244,7 +238,7 @@
 
         .btn-quick {
             flex: 1;
-            padding: 10px 14px;
+            padding: 10px 12px;
             font-size: 12px;
             font-weight: 700;
             border: 1px solid var(--border-color);
@@ -256,18 +250,16 @@
         }
 
         .btn-quick:hover {
-            background: var(--border-color);
+            background: #f1f5f9;
         }
 
-        /* Buscador integrado del álbum */
         .search-box-wrapper {
             margin-bottom: 15px;
-            position: relative;
         }
 
         .search-input {
             width: 100%;
-            padding: 12px 16px;
+            padding: 10px 14px;
             border: 1px solid var(--border-color);
             border-radius: var(--radius-md);
             font-size: 14px;
@@ -277,21 +269,20 @@
 
         .search-input:focus {
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(128,0,32,0.1);
         }
 
-        /* Grilla de Figuritas */
+        /* --- STREAMING_CHUNK: Estilos de la cuadrícula de figuritas --- */
         .grid-stickers {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
-            gap: 12px;
+            gap: 10px;
             margin-top: 15px;
         }
 
         @media (min-width: 600px) {
             .grid-stickers {
                 grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
-                gap: 14px;
+                gap: 12px;
             }
         }
 
@@ -299,7 +290,7 @@
             background: #f8fafc;
             border: 1px solid var(--border-color);
             border-radius: var(--radius-md);
-            padding: 10px 5px;
+            padding: 8px 4px;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -308,7 +299,6 @@
             aspect-ratio: 1 / 1.15;
             transition: var(--transition);
             position: relative;
-            overflow: hidden;
         }
 
         .sticker-card.tengo {
@@ -326,7 +316,6 @@
             font-size: 11px;
             font-weight: 800;
             color: var(--text-muted);
-            letter-spacing: 0.3px;
         }
 
         .sticker-card.tengo .sticker-code {
@@ -340,8 +329,8 @@
         .sticker-badge {
             font-size: 9px;
             font-weight: 800;
-            padding: 2px 6px;
-            border-radius: 10px;
+            padding: 2px 4px;
+            border-radius: 6px;
             background: #e2e8f0;
             color: #475569;
             margin: 4px 0;
@@ -369,12 +358,12 @@
             flex: 1;
             border: none;
             background: white;
-            border-radius: var(--radius-md);
-            padding: 6px 0;
+            border-radius: 6px;
+            padding: 4px 0;
             font-weight: 800;
             font-size: 12px;
             cursor: pointer;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
             border: 1px solid var(--border-color);
             color: var(--text-main);
             transition: var(--transition);
@@ -396,17 +385,17 @@
             border-color: #ef4444;
         }
 
-        /* Herramientas de Análisis */
+        /* --- STREAMING_CHUNK: Estilos de herramientas y cajas de resultados --- */
         .tool-layout {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
         }
 
         .instruction-card {
             background: #f1f5f9;
             border-left: 4px solid var(--accent);
-            padding: 12px 15px;
+            padding: 12px;
             border-radius: 0 var(--radius-md) var(--radius-md) 0;
             font-size: 13px;
             color: #334155;
@@ -419,7 +408,7 @@
         }
 
         .input-label {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -428,12 +417,12 @@
 
         .input-textarea {
             width: 100%;
-            height: 120px;
-            padding: 12px;
-            border: 2px solid var(--border-color);
+            height: 100px;
+            padding: 10px;
+            border: 1px solid var(--border-color);
             border-radius: var(--radius-md);
             font-family: monospace;
-            font-size: 13px;
+            font-size: 12px;
             resize: vertical;
             outline: none;
             transition: var(--transition);
@@ -447,18 +436,16 @@
             background: var(--primary);
             color: white;
             border: none;
-            padding: 14px;
-            font-size: 14px;
+            padding: 12px;
+            font-size: 13px;
             font-weight: 700;
             border-radius: var(--radius-md);
             cursor: pointer;
             transition: var(--transition);
-            box-shadow: 0 4px 10px rgba(128,0,32,0.15);
         }
 
         .btn-primary:hover {
             background: var(--primary-light);
-            transform: translateY(-1px);
         }
 
         .btn-success {
@@ -466,7 +453,7 @@
             color: white;
             border: none;
             padding: 12px;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
             border-radius: var(--radius-md);
             cursor: pointer;
@@ -481,19 +468,15 @@
             background: #f8fafc;
             border: 1px dashed var(--falta-color);
             border-radius: var(--radius-md);
-            padding: 15px;
+            padding: 12px;
             font-size: 13px;
             color: var(--text-main);
             white-space: pre-wrap;
             word-break: break-all;
-            margin-top: 10px;
+            margin-top: 8px;
         }
 
-        .result-box strong {
-            color: var(--primary);
-        }
-
-        /* Estilos del Modal Personalizado (Alternativa a alert/confirm) */
+        /* --- STREAMING_CHUNK: Estilos de modales de confirmación personalizados (sin alerts) --- */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -507,8 +490,8 @@
             align-items: center;
             z-index: 1000;
             opacity: 0;
-            transition: opacity 0.25s ease;
-            padding: 20px;
+            transition: opacity 0.2s ease;
+            padding: 15px;
         }
 
         .modal-overlay.active {
@@ -522,10 +505,10 @@
             border-radius: var(--radius-lg);
             max-width: 400px;
             width: 100%;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            border-top: 5px solid var(--accent);
-            transform: scale(0.9);
-            transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border-top: 4px solid var(--accent);
+            transform: scale(0.95);
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .modal-overlay.active .modal-card {
@@ -533,29 +516,29 @@
         }
 
         .modal-title {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 800;
             color: var(--primary);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .modal-body {
-            font-size: 14px;
+            font-size: 13px;
             color: #475569;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .modal-footer {
             display: flex;
             justify-content: flex-end;
-            gap: 10px;
+            gap: 8px;
         }
 
         .btn-modal {
-            padding: 8px 16px;
+            padding: 8px 14px;
             border-radius: var(--radius-md);
             font-weight: 700;
-            font-size: 13px;
+            font-size: 12px;
             cursor: pointer;
             border: none;
         }
@@ -570,26 +553,23 @@
             color: white;
         }
 
-        /* Notificación Flotante (Toast) */
+        /* Toast flotante de notificación */
         .toast-container {
             position: fixed;
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%) translateY(100px);
-            background: #1e293b;
+            background: #0f172a;
             color: white;
-            padding: 10px 20px;
+            padding: 10px 18px;
             border-radius: 30px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             z-index: 1100;
             opacity: 0;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             pointer-events: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
 
         .toast-container.active {
@@ -600,12 +580,13 @@
 </head>
 <body>
 
+    <!-- Cabecera -->
     <header>
         <h1>Álbum Mundial 2026 🏆</h1>
-        <p>Control de Colección Oficial - Sin Extras</p>
+        <p>Control de Colección Oficial (980 Figuritas)</p>
     </header>
 
-    <!-- Panel de Estadísticas Generales -->
+    <!-- Panel de Estadísticas -->
     <section class="stats-banner">
         <div class="stat-item">
             <div class="stat-val" id="stat-total">0 / 980</div>
@@ -621,22 +602,23 @@
         </div>
         <div class="stat-item">
             <div class="stat-val" id="stat-repetidas">0</div>
-            <div class="stat-label">Repetidas Totales</div>
+            <div class="stat-label">Repetidas</div>
         </div>
     </section>
 
-    <!-- Navegación por pestañas -->
+    <!-- Menú de Navegación SPA -->
     <nav>
         <button onclick="switchTab('album')" id="btn-album" class="active">📖 Mi Álbum</button>
         <button onclick="switchTab('faltantes')" id="btn-faltantes">🔍 ¿Cuáles me faltan?</button>
-        <button onclick="switchTab('cambios')" id="btn-cambios">🤝 Intercambio (Match)</button>
-        <button onclick="switchTab('datos')" id="btn-datos">⚙️ Datos</button>
+        <button onclick="switchTab('cambios')" id="btn-cambios">🤝 Intercambiar</button>
+        <button onclick="switchTab('datos')" id="btn-datos">⚙️ Datos JSON</button>
     </nav>
 
+    <!-- Contenido Principal -->
     <main>
         <!-- PESTAÑA 1: EL ÁLBUM -->
         <section id="tab-album" class="tab-content active">
-            <h2>Gestión de Figuritas</h2>
+            <h2>Gestión del Álbum</h2>
             
             <div class="album-header-controls">
                 <div class="selector-wrapper">
@@ -649,11 +631,11 @@
             </div>
 
             <div class="search-box-wrapper">
-                <input type="text" id="album-search" class="search-input" placeholder="Buscar por código (ej: ARG, FWC, 15)..." oninput="filtrarPorBusqueda()">
+                <input type="text" id="album-search" class="search-input" placeholder="Buscar código de figurita (ej: ARG15, FWC2)..." oninput="filtrarPorBusqueda()">
             </div>
 
             <div id="grid-album" class="grid-stickers">
-                <!-- Se poblará dinámicamente -->
+                <!-- Se inyecta dinámicamente -->
             </div>
         </section>
 
@@ -661,107 +643,120 @@
         <section id="tab-faltantes" class="tab-content">
             <h2>Buscador de Faltantes</h2>
             <div class="tool-layout">
-                <!-- NUEVO: Generador automático de lista de faltantes -->
-                <div class="instruction-card" style="border-left-color: var(--primary); background: rgba(128, 0, 32, 0.04); padding: 15px; border-radius: var(--radius-md);">
-                    <strong style="color: var(--primary);">📋 Mis Faltantes Totales:</strong>
-                    <p style="font-size: 12px; color: var(--text-muted); margin-top: 3px; margin-bottom: 10px;">
-                        Generá la lista completa y ordenada de todas las figuritas que todavía no tenés en tu álbum.
+                <!-- Botón de consulta rápida total -->
+                <div class="instruction-card" style="border-left-color: var(--primary); background: rgba(128, 0, 32, 0.03); padding: 12px; border-radius: var(--radius-md);">
+                    <strong style="color: var(--primary);">📋 Mis Faltantes Oficiales:</strong>
+                    <p style="font-size: 12px; color: var(--text-muted); margin-top: 2px; margin-bottom: 10px;">
+                        Generá la lista formateada y ordenada de todos los cromos que te restan para completar tu álbum.
                     </p>
                     <button class="btn-primary" style="width: 100%;" onclick="generarTodosLosFaltantes()">Generar Mi Lista de Faltantes</button>
                 </div>
 
-                <div id="wrapper-todos-faltantes" style="display: none; margin-top: -5px; margin-bottom: 15px; animation: fadeIn 0.3s ease;">
+                <div id="wrapper-todos-faltantes" style="display: none; animation: fadeIn 0.2s ease;">
                     <div class="input-group">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
                             <span class="input-label" id="lbl-cant-faltantes" style="color: var(--primary); font-weight: 800;"></span>
-                            <button class="btn-quick" style="padding: 4px 10px; font-size: 11px;" onclick="copiarFaltantesAlPortapapeles()">Copiar Lista</button>
+                            <button class="btn-quick" style="padding: 4px 8px; font-size: 11px;" onclick="copiarFaltantesAlPortapapeles()">Copiar Lista</button>
                         </div>
-                        <div id="box-todos-faltantes" class="result-box" style="background: #ffffff; max-height: 180px; overflow-y: auto; border: 1px solid var(--border-color); font-family: monospace;"></div>
+                        <div id="box-todos-faltantes" class="result-box" style="background: #ffffff; max-height: 150px; overflow-y: auto; border: 1px solid var(--border-color); font-family: monospace;"></div>
                     </div>
                 </div>
 
                 <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 5px 0;">
 
                 <div class="instruction-card">
-                    <strong>Analizar lista externa:</strong> Pegá una lista de códigos de figuritas separados por comas (ej: <code>ARG1, ARG20, BRA10, FWC2, HIS11</code>) para saber cuáles de esa lista todavía <strong>no tenés</strong> en tu álbum.
+                    <strong>Analizar lista externa:</strong> Pegá una lista de códigos separados por comas (ej: <code>ARG1, ARG20, FWC2</code>) para saber cuáles de esa lista todavía <strong>no tenés</strong>.
                 </div>
 
                 <div class="input-group">
                     <label class="input-label" for="txt-analizar-faltantes">Pegar Lista de Figuritas:</label>
-                    <textarea id="txt-analizar-faltantes" class="input-textarea" placeholder="Copiá tu texto y pegalo acá. Ej: ARG1, ARG20, BRA10, FWC4, HIS10..."></textarea>
+                    <textarea id="txt-analizar-faltantes" class="input-textarea" placeholder="Pegá tu texto acá... Ej: FWC1, MEX3, RSA16, ARG20"></textarea>
                 </div>
 
                 <button class="btn-primary" onclick="analizarListaFaltantes()">Analizar Faltantes</button>
 
-                <div class="input-group" style="margin-top: 15px;">
+                <div class="input-group">
                     <label class="input-label">Resultados del análisis:</label>
-                    <div id="box-resultado-faltantes" class="result-box">Ingresá códigos arriba para verificar cuáles te faltan.</div>
+                    <div id="box-resultado-faltantes" class="result-box">Pegá la lista de códigos de control para analizarlos.</div>
                 </div>
             </div>
         </section>
 
-        <!-- PESTAÑA 3: INTERCAMBIO (MATCH) -->
+        <!-- PESTAÑA 3: INTERCAMBIO -->
         <section id="tab-cambios" class="tab-content">
             <h2>Match de Intercambio</h2>
             <div class="tool-layout">
                 <div class="instruction-card">
-                    <strong>Instrucciones:</strong> ¿Tenés un amigo con el que quieras cambiar? Pegá acá la lista de las figuritas que a él/ella <strong>le faltan</strong>. El sistema comparará con tus <strong>repetidas</strong> y te mostrará exactamente cuáles podés ofrecerle.
+                    <strong>Instrucciones:</strong> Pegá los códigos de las figuritas que a tu amigo <strong>le faltan</strong>. El sistema las comparará con tus <strong>repetidas</strong> y te listará exactamente las que le podés ofrecer.
                 </div>
 
                 <div class="input-group">
                     <label class="input-label" for="txt-analizar-amigo">Pegar Faltantes de tu Amigo:</label>
-                    <textarea id="txt-analizar-amigo" class="input-textarea" placeholder="Ej: ARG20, BRA4, ESP19, FWC1, HIS8..."></textarea>
+                    <textarea id="txt-analizar-amigo" class="input-textarea" placeholder="Ej: MEX1, MEX3, FWC2, ARG10"></textarea>
                 </div>
 
-                <button class="btn-primary" onclick="analizarIntercambio()">Calcular Coincidencias</button>
+                <button class="btn-primary" onclick="analizarIntercambio()">Calcular Match</button>
 
-                <div class="input-group" style="margin-top: 15px;">
+                <div class="input-group">
                     <label class="input-label">Resultados del Match:</label>
-                    <div id="box-resultado-cambios" class="result-box">Ingresá los faltantes de tu amigo para calcular coincidencias de intercambio.</div>
+                    <div id="box-resultado-cambios" class="result-box">Ingresá los faltantes de tu amigo para calcular coincidencias.</div>
                 </div>
             </div>
         </section>
 
         <!-- PESTAÑA 4: IMPORTACIÓN / EXPORTACIÓN -->
         <section id="tab-datos" class="tab-content">
-            <h2>Gestión de Datos (Respaldos JSON)</h2>
+            <h2>Gestión de Datos JSON</h2>
             <div class="tool-layout">
                 <div class="instruction-card">
-                    <strong>¡Protegé tu progreso!</strong> Podés descargar una copia de seguridad en tu dispositivo en formato de archivo JSON. Si cambiás de navegador o computadora, cargá el archivo aquí para recuperar tu álbum intacto.
+                    <strong>¡Protegé tu progreso!</strong> Podés descargar una copia de seguridad en tu dispositivo en formato JSON o copiar el código de texto directamente.
                 </div>
 
                 <div class="input-group">
                     <label class="input-label">Exportar datos actuales</label>
-                    <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 5px;">Descargá tu archivo de respaldo oficial en formato JSON.</p>
-                    <button class="btn-success" onclick="exportarArchivoJSON()">Descargar Archivo de Respaldos (.json)</button>
+                    <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 5px;">Descargá tu archivo de respaldo oficial o copialo como texto plano.</p>
+                    <div style="display: flex; gap: 8px;">
+                        <button class="btn-success" style="flex: 1;" onclick="exportarArchivoJSON()">Descargar Archivo (.json)</button>
+                        <button class="btn-primary" style="flex: 1;" onclick="mostrarYCopiarJSON()">Mostrar / Copiar JSON</button>
+                    </div>
                 </div>
 
-                <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 15px 0;">
+                <div id="wrapper-export-texto" style="display: none; animation: fadeIn 0.2s ease; margin-top: 10px;">
+                    <div class="input-group">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                            <span class="input-label">Tu código de respaldo actual:</span>
+                            <button class="btn-quick" style="padding: 4px 8px; font-size: 11px;" onclick="copiarTextoExportado()">Copiar Código</button>
+                        </div>
+                        <textarea id="txt-export-result" class="input-textarea" readonly style="background-color: #f1f5f9; height: 120px; font-family: monospace;"></textarea>
+                    </div>
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 10px 0;">
 
                 <div class="input-group">
                     <label class="input-label">Importar datos desde archivo</label>
-                    <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">Seleccioná un archivo .json guardado previamente. <strong>Nota: Esto sobrescribirá tus datos locales actuales.</strong></p>
-                    <input type="file" id="file-import" accept=".json" style="padding: 10px; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 14px; background: #fff;">
-                    <button class="btn-primary" style="background-color: var(--accent); color: #000; font-weight: 800; margin-top: 10px;" onclick="importarArchivoJSON()">Importar Archivo Cargado</button>
+                    <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 5px;">Seleccioná tu archivo de respaldo (.json) guardado anteriormente.</p>
+                    <input type="file" id="file-import" accept=".json" style="padding: 8px; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 13px; background: #fff; width: 100%;">
+                    <button class="btn-primary" style="margin-top: 8px; background-color: var(--accent); color: #000;" onclick="importarArchivoJSON()">Cargar Archivo</button>
                 </div>
 
-                <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 15px 0;">
+                <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 10px 0;">
 
                 <div class="input-group">
                     <label class="input-label">O pegar texto plano JSON</label>
-                    <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">Pegá el contenido de tu copia de seguridad JSON directamente acá:</p>
-                    <textarea id="txt-import-json" class="input-textarea" placeholder="Pegá tu código JSON de copia de seguridad acá..." style="height: 120px; font-family: monospace;"></textarea>
-                    <button class="btn-primary" style="background-color: var(--accent); color: #000; font-weight: 800; margin-top: 10px;" onclick="importarTextoJSON()">Importar desde Texto Plano</button>
+                    <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 5px;">Pegá el contenido de tu código de copia de seguridad directamente acá:</p>
+                    <textarea id="txt-import-json" class="input-textarea" placeholder="Pegá tu código JSON de copia de seguridad acá..." style="height: 100px; font-family: monospace;"></textarea>
+                    <button class="btn-primary" style="margin-top: 8px; background-color: var(--accent); color: #000;" onclick="importarTextoJSON()">Importar desde Texto Plano</button>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Contenedor del Modal Personalizado -->
+    <!-- Diálogo Modal Personalizado -->
     <div class="modal-overlay" id="custom-modal">
         <div class="modal-card">
-            <div class="modal-title" id="modal-title">Título del diálogo</div>
-            <div class="modal-body" id="modal-body">Mensaje o advertencia de control.</div>
+            <div class="modal-title" id="modal-title">Título del Diálogo</div>
+            <div class="modal-body" id="modal-body">Mensaje informativo o advertencia.</div>
             <div class="modal-footer">
                 <button class="btn-modal btn-modal-cancel" id="btn-modal-cancel">Cancelar</button>
                 <button class="btn-modal btn-modal-confirm" id="btn-modal-confirm">Confirmar</button>
@@ -769,20 +764,17 @@
         </div>
     </div>
 
-    <!-- Toast Flotante -->
+    <!-- Toast de Notificaciones -->
     <div class="toast-container" id="toast">
-        <span id="toast-text">Acción realizada con éxito</span>
+        <span id="toast-text">Acción realizada</span>
     </div>
 
     <script>
-        /* --- MOTOR DE DATOS DEL MUNDIAL 2026 --- */
-        
-        // Especificación oficial de las secciones especiales de Panini (Álbum de 980)
+        // Especificación oficial Panini Mundial 2026 (980 Cromos)
         const SECCIONES_ESPECIALES = {
             "FWC": { nombre: "FIFA World Cup 2026 🏆", cant: 20 }
         };
 
-        // 48 selecciones clasificadas organizadas por Grupos Oficiales
         const GRUPOS = {
             "Especiales 🏆": { 
                 "FWC": "FIFA World Cup 2026 🏆"
@@ -801,26 +793,22 @@
             "Grupo L": { "ENG": "Inglaterra 🏴󠁧󠁢󠁥󠁮󠁧󠁿", "CRO": "Croacia 🇭🇷", "GHA": "Ghana 🇬🇭", "PAN": "Panamá 🇵🇦" }
         };
 
-        // Devuelve cuántos cromos oficiales posee la sección o selección específica
         function obtenerCantStickers(codigo) {
-            if (SECCIONES_ESPECIALES[codigo]) {
-                return SECCIONES_ESPECIALES[codigo].cant;
-            }
-            return 20; // 20 cromos oficiales por cada una de las 48 selecciones (1 escudo, 1 foto grupal y 18 jugadores)
+            return 20; // 20 stickers por sección fija (48 selecciones * 20) + (1 FWC * 20) = 980 en total.
         }
 
         let inventario = {};
 
         window.onload = function() {
-            inicializarModuloDatos();
+            inicializarDatos();
             construirSelectorPaises();
             renderizarSeccionSeleccionada();
             actualizarContadoresGenerales();
         };
 
-        function inicializarModuloDatos() {
+        function inicializarDatos() {
             try {
-                const datosLocales = localStorage.getItem('album_mundial_2026_980_v1');
+                const datosLocales = localStorage.getItem('album_mundial_2026_980_final');
                 if (datosLocales) {
                     inventario = JSON.parse(datosLocales);
                     validarEstructuraInventario();
@@ -828,7 +816,7 @@
                     crearInventarioVacio();
                 }
             } catch (err) {
-                console.error("Error cargando inventario. Se creará un inventario nuevo para prevenir fallos.", err);
+                console.error("Error cargando inventario. Se creará uno limpio.", err);
                 crearInventarioVacio();
             }
         }
@@ -862,10 +850,10 @@
         }
 
         function guardarInventario() {
-            localStorage.setItem('album_mundial_2026_980_v1', JSON.stringify(inventario));
+            localStorage.setItem('album_mundial_2026_980_final', JSON.stringify(inventario));
         }
 
-        /* --- SISTEMA DE DIÁLOGOS Y NOTIFICACIONES NATIVAS (Sin alerts ni confirms) --- */
+        /* --- STREAMING_CHUNK: Módulos del sistema de diálogos y notificaciones custom --- */
         function mostrarNotificacion(mensaje) {
             const toast = document.getElementById('toast');
             document.getElementById('toast-text').innerText = mensaje;
@@ -883,7 +871,7 @@
             const btnConfirmar = document.getElementById('btn-modal-confirm');
             const btnCancelar = document.getElementById('btn-modal-cancel');
 
-            // Limpiamos los eventos previos para evitar ejecuciones múltiples
+            // Limpiamos listeners previos clonando nodos
             const nuevoConfirmar = btnConfirmar.cloneNode(true);
             const nuevoCancelar = btnCancelar.cloneNode(true);
             btnConfirmar.parentNode.replaceChild(nuevoConfirmar, btnConfirmar);
@@ -901,18 +889,16 @@
             };
         }
 
-        /* --- INTERFAZ DE USUARIO Y RENDERIZADO DEL ÁLBUM (980 Cromos) --- */
+        /* --- STREAMING_CHUNK: Construcción de controles y renderizador inteligente de grilla --- */
         function construirSelectorPaises() {
             const select = document.getElementById('select-pais');
             select.innerHTML = '';
 
-            // Opción global de todo el álbum
             const optTodo = document.createElement('option');
             optTodo.value = "VER_TODO";
             optTodo.textContent = "🌍 VER TODO EL ÁLBUM (980 cromos)";
             select.appendChild(optTodo);
 
-            // Poblar grupos y selecciones
             for (const grupo in GRUPOS) {
                 const optGroup = document.createElement('optgroup');
                 optGroup.label = grupo;
@@ -921,8 +907,9 @@
                     const opt = document.createElement('option');
                     opt.value = codPais;
                     opt.textContent = `${codPais} - ${GRUPOS[grupo][codPais]}`;
-                    select.appendChild(opt);
+                    optGroup.appendChild(opt);
                 }
+                select.appendChild(optGroup);
             }
         }
 
@@ -934,7 +921,6 @@
 
             grid.innerHTML = '';
 
-            // Adaptar textos de acciones rápidas según el contexto de la vista
             if (selectVal === "VER_TODO") {
                 btnLlenar.textContent = "Llenar TODO el Álbum";
                 btnVaciar.textContent = "Vaciar TODO el Álbum";
@@ -991,7 +977,6 @@
             guardarInventario();
             actualizarContadoresGenerales();
 
-            // Refrescar el elemento en el DOM de forma específica para mejor experiencia visual
             const card = document.querySelector(`.sticker-card[data-codigo="${key}"]`);
             if (card) {
                 card.className = `sticker-card ${cant > 0 ? (cant > 1 ? 'repetida' : 'tengo') : ''}`;
@@ -1019,13 +1004,13 @@
             });
         }
 
-        /* --- ACCIONES RÁPIDAS (Llenado y Vaciado) --- */
+        /* --- STREAMING_CHUNK: Acciones masivas de llenado y vaciado de control --- */
         function confirmarLlenarSeccion() {
             const selectVal = document.getElementById('select-pais').value;
             if (selectVal === "VER_TODO") {
                 abrirModalConfirmacion(
                     "¿Llenar TODO el álbum?", 
-                    "Confirmá si deseás marcar las 980 figuritas como obtenidas (1 de cada una). Esto no afectará a tus repetidas.",
+                    "Marcarás las 980 figuritas como obtenidas (valor 1). Las repetidas actuales se mantendrán intactas.",
                     () => {
                         for (const key in inventario) {
                             if (inventario[key] === 0) inventario[key] = 1;
@@ -1033,13 +1018,13 @@
                         guardarInventario();
                         renderizarSeccionSeleccionada();
                         actualizarContadoresGenerales();
-                        mostrarNotificacion("¡Álbum completado al 100%!");
+                        mostrarNotificacion("¡Álbum marcado al 100%!");
                     }
                 );
             } else {
                 abrirModalConfirmacion(
                     `¿Llenar sección ${selectVal}?`,
-                    `Marcarás todas las figuritas de ${selectVal} como obtenidas (con cantidad 1).`,
+                    `Marcarás todos los cromos de ${selectVal} como obtenidos (con cantidad 1).`,
                     () => {
                         const cant = obtenerCantStickers(selectVal);
                         for (let i = 1; i <= cant; i++) {
@@ -1049,7 +1034,7 @@
                         guardarInventario();
                         renderizarSeccionSeleccionada();
                         actualizarContadoresGenerales();
-                        mostrarNotificacion(`Sección ${selectVal} marcada como obtenida.`);
+                        mostrarNotificacion(`Sección ${selectVal} llena.`);
                     }
                 );
             }
@@ -1060,7 +1045,7 @@
             if (selectVal === "VER_TODO") {
                 abrirModalConfirmacion(
                     "⚠️ ¿VACIAS TODO TU ÁLBUM?", 
-                    "Esta acción no se puede deshacer. Se restablecerá el progreso de todas las figuritas y repetidas a cero.",
+                    "Esta acción eliminará TODO tu progreso, incluyendo repetidas. No se puede deshacer.",
                     () => {
                         crearInventarioVacio();
                         renderizarSeccionSeleccionada();
@@ -1071,7 +1056,7 @@
             } else {
                 abrirModalConfirmacion(
                     `¿Vaciar sección ${selectVal}?`,
-                    `Se restablecerá a 0 la posesión y repetidas de todos los cromos de ${selectVal}.`,
+                    `Se restablecerá a 0 la posesión de todas las figuritas de ${selectVal}.`,
                     () => {
                         const cant = obtenerCantStickers(selectVal);
                         for (let i = 1; i <= cant; i++) {
@@ -1080,7 +1065,7 @@
                         guardarInventario();
                         renderizarSeccionSeleccionada();
                         actualizarContadoresGenerales();
-                        mostrarNotificacion(`Sección ${selectVal} vaciada con éxito.`);
+                        mostrarNotificacion(`Sección ${selectVal} vaciada.`);
                     }
                 );
             }
@@ -1089,7 +1074,7 @@
         function actualizarContadoresGenerales() {
             let totalDiferentes = 0;
             let totalRepetidas = 0;
-            const totalAlbum = 980; // Oficial 2026
+            const totalAlbum = 980;
 
             for (const key in inventario) {
                 const cant = inventario[key] || 0;
@@ -1110,7 +1095,6 @@
             document.getElementById('stat-repetidas').innerText = totalRepetidas;
         }
 
-        // NAVEGACIÓN SPA NATIVA
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(tab => {
                 tab.classList.remove('active');
@@ -1123,11 +1107,10 @@
             document.getElementById(`btn-${tabId}`).classList.add('active');
         }
 
-        /* --- STREAMING_CHUNK: Implementando generador automático de faltantes totales --- */
+        /* --- STREAMING_CHUNK: Lógica para generar y listar los faltantes totales --- */
         function generarTodosLosFaltantes() {
             const faltantes = [];
             
-            // Recorrer de forma ordenada todos los grupos, selecciones y especiales
             for (const grupo in GRUPOS) {
                 for (const codPais in GRUPOS[grupo]) {
                     const cantStickers = obtenerCantStickers(codPais);
@@ -1146,10 +1129,10 @@
             const box = document.getElementById('box-todos-faltantes');
 
             if (faltantes.length === 0) {
-                label.innerText = "¡Completado!";
+                label.innerText = "¡Álbum Completado!";
                 box.innerHTML = "<span style='color: var(--tengo-color); font-weight: 800;'>🎉 ¡Impecable! No te falta ninguna figurita en todo el álbum.</span>";
             } else {
-                label.innerText = `Faltantes en el álbum (${faltantes.length}):`;
+                label.innerText = `Mis faltantes (${faltantes.length}):`;
                 box.innerHTML = `<span id="text-faltantes-completo" style="font-size: 13px; letter-spacing: 0.3px;">${faltantes.join(', ')}</span>`;
             }
 
@@ -1164,7 +1147,6 @@
                 return;
             }
 
-            // Fallback de copiado seguro en entornos con restricciones (Iframes)
             const tempInput = document.createElement('textarea');
             tempInput.value = textSpan.innerText;
             document.body.appendChild(tempInput);
@@ -1173,28 +1155,27 @@
             try {
                 const copiado = document.execCommand('copy');
                 if (copiado) {
-                    mostrarNotificacion("📋 ¡Lista de faltantes copiada al portapapeles!");
+                    mostrarNotificacion("📋 ¡Lista de faltantes copiada!");
                 } else {
-                    mostrarNotificacion("Error al intentar copiar.");
+                    mostrarNotificacion("Error al copiar.");
                 }
             } catch (err) {
-                mostrarNotificacion("Tu navegador no soporta el copiado automático.");
+                mostrarNotificacion("Navegador no compatible con copiado automático.");
             }
             
             document.body.removeChild(tempInput);
         }
 
-        /* --- STREAMING_CHUNK: Implementando la lógica del analizador de listas de faltantes por comas --- */
+        /* --- STREAMING_CHUNK: Algoritmo para analizar y filtrar listas externas por comas --- */
         function analizarListaFaltantes() {
             const rawText = document.getElementById('txt-analizar-faltantes').value;
             const resultBox = document.getElementById('box-resultado-faltantes');
 
             if (!rawText.trim()) {
-                resultBox.innerHTML = "<span style='color: var(--text-muted);'>Ingresá códigos arriba para verificar cuáles te faltan.</span>";
+                resultBox.innerHTML = "<span style='color: var(--text-muted);'>Pegá la lista de códigos de control para analizarlos.</span>";
                 return;
             }
 
-            // Normalización y parseo estricto del texto ingresado
             const tokens = rawText.toUpperCase().split(',');
             const codigosAnalizados = [];
             const codigosInvalidos = [];
@@ -1203,7 +1184,6 @@
                 const limpio = tk.trim();
                 if (limpio === "") return;
 
-                // Validación de estructura para evitar falsas entradas (ej. ARG1, HIS11)
                 if (validarCodigoCromo(limpio)) {
                     codigosAnalizados.push(limpio);
                 } else {
@@ -1212,41 +1192,36 @@
             });
 
             if (codigosAnalizados.length === 0) {
-                resultBox.innerHTML = "<span style='color: #ef4444;'>No se detectaron códigos de figuritas válidos. Asegurate de seguir el formato (ej. ARG1, BRA15, FWC3).</span>";
+                resultBox.innerHTML = "<span style='color: #ef4444;'>No se detectaron códigos válidos. Asegurate del formato (ej: FWC1, MEX10).</span>";
                 return;
             }
 
-            // Filtro de faltantes reales
-            const faltantesReales = codigosAnalizados.filter(cod => {
-                return inventario[cod] === 0;
-            });
-
-            // Remover duplicados en el informe final
+            const faltantesReales = codigosAnalizados.filter(cod => inventario[cod] === 0);
             const unicosFaltantes = [...new Set(faltantesReales)];
 
-            let htmlOutput = `Se analizaron <strong>${codigosAnalizados.length}</strong> códigos ingresados de forma válida.<br><br>`;
+            let htmlOutput = `Se validaron <strong>${codigosAnalizados.length}</strong> códigos.<br><br>`;
 
             if (unicosFaltantes.length > 0) {
-                htmlOutput += `Te faltan adquirir: <span style='color: #ef4444; font-weight: 800;'>${unicosFaltantes.length} cromos</span> de la lista:<br><br>`;
-                htmlOutput += `<span style='font-size: 15px; letter-spacing: 0.5px;'>${unicosFaltantes.join(', ')}</span>`;
+                htmlOutput += `Te faltan conseguir: <span style='color: #ef4444; font-weight: 800;'>${unicosFaltantes.length} cromos</span>:<br><br>`;
+                htmlOutput += `<span style='font-size: 14px; letter-spacing: 0.5px;'>${unicosFaltantes.join(', ')}</span>`;
             } else {
-                htmlOutput += "<span style='color: var(--tengo-color); font-weight: 800;'>🎉 ¡Impecable! Ya poseés en tu álbum todas las figuritas analizadas en esa lista.</span>";
+                htmlOutput += "<span style='color: var(--tengo-color); font-weight: 800;'>🎉 ¡Excelente! Ya tenés todas las figuritas de esa lista en tu álbum.</span>";
             }
 
             if (codigosInvalidos.length > 0) {
-                htmlOutput += `<br><br><span style='color: var(--text-muted); font-size: 11px;'>* Se ignoraron ${codigosInvalidos.length} códigos con formato incorrecto para el Álbum 2026: [${codigosInvalidos.join(', ')}]</span>`;
+                htmlOutput += `<br><br><span style='color: var(--text-muted); font-size: 11px;'>* Códigos inválidos ignorados: [${codigosInvalidos.join(', ')}]</span>`;
             }
 
             resultBox.innerHTML = htmlOutput;
         }
 
-        /* --- STREAMING_CHUNK: Implementando la lógica matemática del analizador de intercambios (Match) --- */
+        /* --- STREAMING_CHUNK: Algoritmo para calcular e identificar coincidencias de intercambio (Match) --- */
         function analizarIntercambio() {
             const rawText = document.getElementById('txt-analizar-amigo').value;
             const resultBox = document.getElementById('box-resultado-cambios');
 
             if (!rawText.trim()) {
-                resultBox.innerHTML = "<span style='color: var(--text-muted);'>Ingresá los faltantes de tu amigo para calcular coincidencias de intercambio.</span>";
+                resultBox.innerHTML = "<span style='color: var(--text-muted);'>Ingresá los faltantes de tu amigo para calcular coincidencias.</span>";
                 return;
             }
 
@@ -1270,40 +1245,36 @@
                 return;
             }
 
-            // Filtrar cuáles de las figuritas que a tu amigo le faltan las tenés vos como "REPETIDAS" (cantidad >= 2)
             const matchOfrecibles = codigosAmigo.filter(cod => {
                 const miCantidad = inventario[cod] || 0;
-                return miCantidad > 1; // Poseo repetidas
+                return miCantidad > 1; // Tengo repetidas
             });
 
             const unicosMatch = [...new Set(matchOfrecibles)];
 
-            let htmlOutput = `Se analizaron <strong>${codigosAmigo.length}</strong> faltantes de tu amigo.<br><br>`;
+            let htmlOutput = `Se analizaron <strong>${codigosAmigo.length}</strong> códigos de tu amigo.<br><br>`;
 
             if (unicosMatch.length > 0) {
-                htmlOutput += `¡Excelente! Tenés para ofrecerle <span style='color: var(--repetida-color); font-weight: 800;'>${unicosMatch.length} figuritas repetidas</span> que le faltan:<br><br>`;
-                htmlOutput += `<span style='font-size: 15px; letter-spacing: 0.5px;'>${unicosMatch.join(', ')}</span>`;
+                htmlOutput += `¡Podés ofrecerle <span style='color: var(--repetida-color); font-weight: 800;'>${unicosMatch.length} repetidas</span> de tu colección:<br><br>`;
+                htmlOutput += `<span style='font-size: 14px; letter-spacing: 0.5px;'>${unicosMatch.join(', ')}</span>`;
             } else {
-                htmlOutput += "<span style='color: #ef4444; font-weight: 800;'>No tenés repetida ninguna de las figuritas que tu amigo está necesitando actualmente.</span>";
+                htmlOutput += "<span style='color: #ef4444; font-weight: 800;'>No poseés repetidas que tu amigo necesite en su lista actual.</span>";
             }
 
             if (codigosInvalidos.length > 0) {
-                htmlOutput += `<br><br><span style='color: var(--text-muted); font-size: 11px;'>* Códigos del amigo ignorados por formato incorrecto: [${codigosInvalidos.join(', ')}]</span>`;
+                htmlOutput += `<br><br><span style='color: var(--text-muted); font-size: 11px;'>* Códigos del amigo ignorados: [${codigosInvalidos.join(', ')}]</span>`;
             }
 
             resultBox.innerHTML = htmlOutput;
         }
 
-        // Validación estricta de estructura para asegurar que el código de figurita es real en la base del álbum de 980
         function validarCodigoCromo(cod) {
-            // Expresión regular para separar letras (código selección/sección) de números
             const match = cod.match(/^([A-Z]{3})([0-9]+)$/);
             if (!match) return false;
 
             const prefijo = match[1];
             const numero = parseInt(match[2], 10);
 
-            // Verificar si el prefijo existe
             let esValido = false;
             for (const grupo in GRUPOS) {
                 if (GRUPOS[grupo][prefijo] !== undefined) {
@@ -1318,8 +1289,7 @@
             return (numero >= 1 && numero <= limiteMax);
         }
 
-        /* --- STREAMING_CHUNK: Implementando módulo de carga e importación nativa de archivos JSON --- */
-        /* --- EXPORTAR E IMPORTAR DATOS REALES --- */
+        /* --- STREAMING_CHUNK: Sistema de Copias de Seguridad, Exportación y Lectura de JSON --- */
         function exportarArchivoJSON() {
             try {
                 const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(inventario, null, 2));
@@ -1329,21 +1299,44 @@
                 document.body.appendChild(downloadAnchor);
                 downloadAnchor.click();
                 downloadAnchor.remove();
-                mostrarNotificacion("¡Archivo de respaldo descargado con éxito!");
+                mostrarNotificacion("¡Archivo de respaldo descargado!");
             } catch (err) {
-                mostrarNotificacion("Error al intentar generar la descarga.");
+                mostrarNotificacion("Error al procesar la descarga.");
                 console.error(err);
+            }
+        }
+
+        function mostrarYCopiarJSON() {
+            const wrapper = document.getElementById('wrapper-export-texto');
+            const txtArea = document.getElementById('txt-export-result');
+
+            const jsonString = JSON.stringify(inventario, null, 2);
+            txtArea.value = jsonString;
+            wrapper.style.display = 'block';
+
+            wrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            mostrarNotificacion("Código JSON generado para copia.");
+        }
+
+        function copiarTextoExportado() {
+            const txtArea = document.getElementById('txt-export-result');
+            txtArea.select();
+            try {
+                const copiado = document.execCommand('copy');
+                if (copiado) {
+                    mostrarNotificacion("📋 Código JSON copiado al portapapeles.");
+                } else {
+                    mostrarNotificacion("Error al intentar copiar.");
+                }
+            } catch (err) {
+                mostrarNotificacion("Copia manualmente el texto de la caja.");
             }
         }
 
         function importarArchivoJSON() {
             const inputArchivo = document.getElementById('file-import');
             if (inputArchivo.files.length === 0) {
-                abrirModalConfirmacion(
-                    "Error de Importación",
-                    "Asegurate de haber seleccionado previamente tu archivo .json antes de hacer click en importar.",
-                    () => {}
-                );
+                abrirModalConfirmacion("Error de carga", "Seleccioná primero un archivo .json para poder procesarlo.", () => {});
                 return;
             }
 
@@ -1353,77 +1346,42 @@
             lector.onload = function(e) {
                 try {
                     const datosImportados = JSON.parse(e.target.result);
-                    
-                    // Validación de que el JSON tiene el formato correcto
-                    if (typeof datosImportados === 'object' && datosImportados !== null) {
-                        
-                        // Validar si al menos un código clave del mundial existe (ej: MEX1 o FWC1)
-                        if (datosImportados["MEX1"] !== undefined || datosImportados["FWC1"] !== undefined) {
-                            inventario = datosImportados;
-                            validarEstructuraInventario(); // Limpia, migra y asegura compatibilidad con 980 cromos
-                            renderizarSeccionSeleccionada();
-                            actualizarContadoresGenerales();
-                            mostrarNotificacion("¡Álbum restaurado con éxito!");
-                        } else {
-                            abrirModalConfirmacion(
-                                "Archivo No Válido",
-                                "El archivo JSON cargado no posee el formato de datos del Álbum Mundial 2026.",
-                                () => {}
-                            );
-                        }
-                    } else {
-                        throw new Error("Formato inválido.");
-                    }
+                    procesarDatosImportados(datosImportados);
                 } catch (err) {
-                    console.error(err);
-                    abrirModalConfirmacion(
-                        "Error de Lectura",
-                        "No se pudo procesar el archivo. Comprobá que sea un JSON íntegro y que no esté corrupto.",
-                        () => {}
-                    );
+                    abrirModalConfirmacion("Error de lectura", "No se pudo descifrar el archivo. Comprobá que corresponda a un JSON de respaldo válido.", () => {});
                 }
             };
-
             lector.readAsText(archivo);
         }
 
         function importarTextoJSON() {
             const txt = document.getElementById('txt-import-json').value.trim();
             if (!txt) {
-                abrirModalConfirmacion(
-                    "Error de Importación",
-                    "Asegurate de pegar el texto JSON antes de hacer click en importar.",
-                    () => {}
-                );
+                abrirModalConfirmacion("Error de carga", "Pegá primero el código de respaldo en la caja para procesarlo.", () => {});
                 return;
             }
             try {
                 const datosImportados = JSON.parse(txt);
-                if (typeof datosImportados === 'object' && datosImportados !== null) {
-                    if (datosImportados["MEX1"] !== undefined || datosImportados["FWC1"] !== undefined) {
-                        inventario = datosImportados;
-                        validarEstructuraInventario(); // Limpia y valida la estructura
-                        renderizarSeccionSeleccionada();
-                        actualizarContadoresGenerales();
-                        mostrarNotificacion("¡Álbum restaurado con éxito desde texto plano!");
-                        document.getElementById('txt-import-json').value = '';
-                    } else {
-                        abrirModalConfirmacion(
-                            "Datos No Válidos",
-                            "El texto JSON pegado no posee el formato de datos del Álbum Mundial 2026.",
-                            () => {}
-                        );
-                    }
-                } else {
-                    throw new Error("Formato inválido.");
-                }
+                procesarDatosImportados(datosImportados);
+                document.getElementById('txt-import-json').value = '';
             } catch (err) {
-                console.error(err);
-                abrirModalConfirmacion(
-                    "Error de Lectura",
-                    "No se pudo procesar el texto. Comprobá que sea un JSON de respaldo válido.",
-                    () => {}
-                );
+                abrirModalConfirmacion("Error de lectura", "No se pudo procesar el texto. Verificá que corresponda a un código de respaldo JSON íntegro.", () => {});
+            }
+        }
+
+        function procesarDatosImportados(datos) {
+            if (typeof datos === 'object' && datos !== null) {
+                if (datos["MEX1"] !== undefined || datos["FWC1"] !== undefined) {
+                    inventario = datos;
+                    validarEstructuraInventario();
+                    renderizarSeccionSeleccionada();
+                    actualizarContadoresGenerales();
+                    mostrarNotificacion("¡Álbum restaurado con éxito!");
+                } else {
+                    abrirModalConfirmacion("Datos Inválidos", "El JSON no pertenece a una estructura del Álbum Mundial 2026.", () => {});
+                }
+            } else {
+                throw new Error("Estructura incompatible.");
             }
         }
     </script>
