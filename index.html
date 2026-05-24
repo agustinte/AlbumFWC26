@@ -3,741 +3,814 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Álbum Virtual Mundial 2026 - Organizador</title>
+    <title>Álbum Mundial 2026 - Oficial 980</title>
     <style>
-        /* CSS Puro y Moderno - Sin Frameworks Externos */
         :root {
-            --primary-color: #7A0C2E; /* Guinda Mundialista */
-            --accent-gold: #D4AF37;   /* Dorado */
-            --bg-light: #F4F6F9;
-            --card-bg: #FFFFFF;
-            --text-main: #1C1917;
-            --text-muted: #78716C;
-            --border-color: #E7E5E4;
-            
-            /* Colores de Estado */
-            --state-missing: #F5F5F4;
-            --state-owned: #DCFCE7;
-            --state-owned-text: #15803D;
-            --state-owned-border: #86EFAC;
-            --state-repeated: #FEF3C7;
-            --state-repeated-text: #B45309;
-            --state-repeated-border: #FDE047;
-            
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --radius-lg: 12px;
+            --primary: #800020; /* Vino mundialista */
+            --primary-light: #9a1f3a;
+            --accent: #d4af37; /* Dorado campeón */
+            --bg-page: #f4f5f8;
+            --bg-card: #ffffff;
+            --text-main: #1d1d1f;
+            --text-muted: #6e6e73;
+            --border-color: #e2e8f0;
+            --tengo-color: #10b981; /* Verde esmeralda */
+            --repetida-color: #f59e0b; /* Ámbar */
+            --falta-color: #94a3b8; /* Gris azulado */
+            --radius-lg: 14px;
             --radius-md: 8px;
-            --radius-sm: 4px;
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-light);
+            background-color: var(--bg-page);
             color: var(--text-main);
             line-height: 1.5;
-            padding: 15px;
+            padding-bottom: 40px;
         }
 
-        /* Contenedor Principal */
-        .app-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: #FFFFFF;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md);
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-        }
-
-        /* Encabezado */
         header {
-            background-color: var(--primary-color);
-            color: #FFFFFF;
-            padding: 24px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, #4a0012 100%);
+            color: white;
+            padding: 30px 20px;
             text-align: center;
-            border-bottom: 4px solid var(--accent-gold);
-            position: relative;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            border-bottom: 3px solid var(--accent);
+            margin-bottom: 25px;
         }
 
         header h1 {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 800;
+            letter-spacing: -0.5px;
             margin-bottom: 6px;
-            letter-spacing: 0.5px;
             text-transform: uppercase;
         }
 
         header p {
             font-size: 14px;
-            color: #F3F4F6;
             opacity: 0.9;
+            font-weight: 300;
         }
 
-        /* Panel de Estadísticas Generales */
+        /* Panel de Estadísticas */
         .stats-banner {
-            background: #FAF9F6;
-            border-bottom: 1px solid var(--border-color);
-            padding: 15px 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 15px;
-            text-align: center;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            max-width: 900px;
+            margin: -15px auto 25px auto;
+            padding: 0 15px;
+        }
+
+        @media (min-width: 600px) {
+            .stats-banner {
+                grid-template-columns: repeat(4, 1fr);
+            }
         }
 
         .stat-item {
-            background: #FFFFFF;
-            padding: 10px;
-            border-radius: var(--radius-md);
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
             border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
         }
 
         .stat-val {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--primary-color);
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--primary);
         }
 
         .stat-label {
             font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
             color: var(--text-muted);
-            margin-top: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-top: 4px;
+            letter-spacing: 0.5px;
         }
 
-        /* Barra de Navegación */
+        /* Navegación por pestañas */
         nav {
             display: flex;
-            background: #FFFFFF;
-            border-bottom: 1px solid var(--border-color);
+            justify-content: center;
+            gap: 6px;
+            margin: 0 auto 25px auto;
+            max-width: 900px;
+            padding: 0 15px;
             overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none; /* Firefox */
+        }
+
+        nav::-webkit-scrollbar {
+            display: none; /* Safari & Chrome */
         }
 
         nav button {
-            flex: 1;
-            min-width: 110px;
-            padding: 15px 10px;
-            border: none;
-            background: transparent;
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-muted);
+            padding: 12px 18px;
+            font-size: 13px;
+            font-weight: 700;
             cursor: pointer;
-            border-bottom: 3px solid transparent;
-            transition: all 0.2s ease-in-out;
-            text-align: center;
-            white-space: nowrap;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            border-radius: 30px;
+            color: var(--text-muted);
+            transition: var(--transition);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
         }
 
         nav button:hover {
-            color: var(--primary-color);
-            background: rgba(122, 12, 46, 0.02);
+            background: #f8fafc;
+            color: var(--primary);
+            border-color: var(--primary-light);
         }
 
         nav button.active {
-            color: var(--primary-color);
-            border-bottom-color: var(--primary-color);
-            background: rgba(122, 12, 46, 0.04);
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 4px 10px rgba(128, 0, 32, 0.25);
         }
 
-        /* Contenido de Pestañas */
+        /* Contenedores de contenido */
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
         .tab-content {
             display: none;
+            background: var(--bg-card);
             padding: 20px;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border: 1px solid var(--border-color);
+            animation: fadeIn 0.3s ease;
         }
 
         .tab-content.active {
             display: block;
         }
 
-        /* --- PESTAÑA ÁLBUM --- */
-        /* Controladores del Álbum */
-        .album-controls {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+            border-left: 4px solid var(--accent);
+            padding-left: 10px;
+        }
+
+        /* Controles superiores del álbum */
+        .album-header-controls {
+            display: flex;
+            flex-direction: column;
             gap: 10px;
             margin-bottom: 20px;
         }
 
-        @media (min-width: 768px) {
-            .album-controls {
-                grid-template-columns: 2fr 1fr 1fr;
+        @media (min-width: 600px) {
+            .album-header-controls {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
             }
         }
 
-        .select-custom {
+        .selector-wrapper {
+            position: relative;
+            flex: 1;
+        }
+
+        .selector-pais {
             width: 100%;
-            padding: 12px;
-            font-size: 14px;
-            border-radius: var(--radius-md);
-            border: 1px solid var(--border-color);
-            background-color: #FFFFFF;
-            cursor: pointer;
-            font-weight: 500;
-        }
-
-        .select-custom:focus {
-            outline: 2px solid var(--primary-color);
-        }
-
-        .btn-aux {
-            background-color: #FFFFFF;
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 12px;
-            font-size: 13px;
+            padding: 12px 16px;
+            font-size: 15px;
             font-weight: 600;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background-color: var(--bg-card);
+            cursor: pointer;
+            outline: none;
+            transition: var(--transition);
+            color: var(--text-main);
+            appearance: none;
+        }
+
+        .selector-pais:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(128, 0, 32, 0.1);
+        }
+
+        .selector-wrapper::after {
+            content: "▼";
+            font-size: 10px;
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+
+        .album-quick-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-quick {
+            flex: 1;
+            padding: 10px 14px;
+            font-size: 12px;
+            font-weight: 700;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: #f8fafc;
             color: var(--text-main);
             cursor: pointer;
-            transition: background 0.2s;
-            text-align: center;
+            transition: var(--transition);
         }
 
-        .btn-aux:hover {
-            background-color: #F5F5F4;
+        .btn-quick:hover {
+            background: var(--border-color);
         }
 
-        /* Estadísticas de la Selección seleccionada */
-        .selection-header {
-            background: #F5F5F4;
-            padding: 12px 16px;
-            border-radius: var(--radius-md);
+        /* Buscador integrado del álbum */
+        .search-box-wrapper {
             margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
+            position: relative;
         }
 
-        .selection-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-
-        .selection-stats {
-            font-size: 13px;
-            font-weight: 600;
-            background: #FFFFFF;
-            padding: 4px 10px;
-            border-radius: 20px;
+        .search-input {
+            width: 100%;
+            padding: 12px 16px;
             border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(128,0,32,0.1);
         }
 
         /* Grilla de Figuritas */
-        .stickers-grid {
+        .grid-stickers {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
             gap: 12px;
+            margin-top: 15px;
         }
 
-        /* Carta de Figurita */
+        @media (min-width: 600px) {
+            .grid-stickers {
+                grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
+                gap: 14px;
+            }
+        }
+
         .sticker-card {
-            background-color: var(--state-missing);
+            background: #f8fafc;
             border: 1px solid var(--border-color);
             border-radius: var(--radius-md);
-            padding: 10px;
+            padding: 10px 5px;
             text-align: center;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 125px;
+            align-items: center;
+            aspect-ratio: 1 / 1.15;
+            transition: var(--transition);
             position: relative;
-            transition: transform 0.15s, box-shadow 0.15s, background-color 0.2s;
-            box-shadow: var(--shadow-sm);
+            overflow: hidden;
         }
 
-        .sticker-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        .sticker-card.tengo {
+            background: rgba(16, 185, 129, 0.08);
+            border-color: var(--tengo-color);
         }
 
-        .sticker-card.owned {
-            background-color: var(--state-owned);
-            border-color: var(--state-owned-border);
-            color: var(--state-owned-text);
-        }
-
-        .sticker-card.repeated {
-            background-color: var(--state-repeated);
-            border-color: var(--state-repeated-border);
-            color: var(--state-repeated-text);
+        .sticker-card.repetida {
+            background: rgba(245, 158, 11, 0.08);
+            border-color: var(--repetida-color);
+            box-shadow: inset 0 0 0 1px var(--repetida-color);
         }
 
         .sticker-code {
-            font-size: 14px;
+            font-size: 11px;
             font-weight: 800;
+            color: var(--text-muted);
             letter-spacing: 0.3px;
         }
 
-        .sticker-state-lbl {
-            font-size: 11px;
-            font-weight: 600;
+        .sticker-card.tengo .sticker-code {
+            color: #047857;
+        }
+
+        .sticker-card.repetida .sticker-code {
+            color: #b45309;
+        }
+
+        .sticker-badge {
+            font-size: 9px;
+            font-weight: 800;
+            padding: 2px 6px;
+            border-radius: 10px;
+            background: #e2e8f0;
+            color: #475569;
             margin: 4px 0;
             text-transform: uppercase;
         }
 
-        /* Botones de Control en Carta */
-        .card-buttons {
-            display: flex;
-            gap: 6px;
-            margin-top: 8px;
+        .sticker-card.tengo .sticker-badge {
+            background: var(--tengo-color);
+            color: white;
         }
 
-        .btn-card {
+        .sticker-card.repetida .sticker-badge {
+            background: var(--repetida-color);
+            color: white;
+        }
+
+        .sticker-controls {
+            display: flex;
+            width: 100%;
+            gap: 4px;
+            margin-top: auto;
+        }
+
+        .btn-ctrl {
             flex: 1;
-            padding: 8px 0;
-            font-size: 15px;
-            font-weight: 800;
             border: none;
-            background-color: rgba(0, 0, 0, 0.06);
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            transition: background 0.2s, transform 0.1s;
-        }
-
-        .btn-card:hover {
-            background-color: rgba(0, 0, 0, 0.12);
-        }
-
-        .btn-card:active {
-            transform: scale(0.92);
-        }
-
-        /* Insignia de Cantidad de Repetidas */
-        .rep-badge {
-            position: absolute;
-            top: -6px;
-            right: -6px;
-            background-color: #EA580C;
-            color: #FFFFFF;
-            font-size: 11px;
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 6px 0;
             font-weight: 800;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+            font-size: 12px;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            transition: var(--transition);
         }
 
-        /* --- PESTAÑAS ANALÍTICAS (Faltantes & Intercambio) --- */
+        .btn-ctrl:active {
+            transform: scale(0.9);
+        }
+
+        .btn-ctrl.btn-plus:hover {
+            background: var(--tengo-color);
+            color: white;
+            border-color: var(--tengo-color);
+        }
+
+        .btn-ctrl.btn-minus:hover {
+            background: #ef4444;
+            color: white;
+            border-color: #ef4444;
+        }
+
+        /* Herramientas de Análisis */
         .tool-layout {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 15px;
         }
 
         .instruction-card {
-            background: #F8FAFC;
-            border-left: 4px solid var(--accent-gold);
-            padding: 15px;
-            border-radius: var(--radius-md);
-            font-size: 14px;
-            color: #475569;
+            background: #f1f5f9;
+            border-left: 4px solid var(--accent);
+            padding: 12px 15px;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            font-size: 13px;
+            color: #334155;
         }
 
         .input-group {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 6px;
         }
 
         .input-label {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             color: var(--text-muted);
         }
 
-        textarea.input-textarea {
+        .input-textarea {
             width: 100%;
             height: 120px;
             padding: 12px;
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-            font-size: 14px;
-            border: 1px solid var(--border-color);
+            border: 2px solid var(--border-color);
             border-radius: var(--radius-md);
+            font-family: monospace;
+            font-size: 13px;
             resize: vertical;
-            background-color: #FAFAFA;
+            outline: none;
+            transition: var(--transition);
         }
 
-        textarea.input-textarea:focus {
-            outline: 2px solid var(--primary-color);
-            background-color: #FFFFFF;
+        .input-textarea:focus {
+            border-color: var(--primary);
         }
 
         .btn-primary {
-            background-color: var(--primary-color);
-            color: #FFFFFF;
+            background: var(--primary);
+            color: white;
             border: none;
             padding: 14px;
             font-size: 14px;
             font-weight: 700;
             border-radius: var(--radius-md);
             cursor: pointer;
-            transition: background 0.2s, transform 0.1s;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(128,0,32,0.15);
         }
 
         .btn-primary:hover {
-            background-color: #5E0823;
+            background: var(--primary-light);
+            transform: translateY(-1px);
         }
 
-        .btn-primary:active {
-            transform: scale(0.98);
-        }
-
-        /* Resultados de Análisis */
-        .analysis-box {
-            background-color: #FAF9F6;
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 20px;
-            display: none;
-        }
-
-        .analysis-box.active {
-            display: block;
-        }
-
-        .analysis-title {
-            font-size: 15px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--text-main);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .analysis-output {
-            background: #FFFFFF;
-            border: 1px solid var(--border-color);
-            padding: 15px;
-            border-radius: var(--radius-sm);
-            font-size: 14px;
-            font-family: monospace;
-            line-height: 1.6;
-            white-space: pre-wrap;
-            word-break: break-all;
-            max-height: 300px;
-            overflow-y: auto;
-            color: #1E293B;
-        }
-
-        .copy-btn {
-            background: #F1F5F9;
-            border: 1px solid var(--border-color);
-            padding: 6px 12px;
-            font-size: 11px;
-            font-weight: 700;
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-        }
-
-        .copy-btn:hover {
-            background: #E2E8F0;
-        }
-
-        /* --- PESTAÑA IMPORTAR / EXPORTAR --- */
-        .io-card {
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 20px;
-            margin-bottom: 15px;
-        }
-
-        .io-card h3 {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--primary-color);
-        }
-
-        .io-card p {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 15px;
-        }
-
-        .file-upload-wrapper {
-            position: relative;
-            display: inline-block;
-            width: 100%;
-        }
-
-        .file-input {
-            width: 100%;
-            padding: 12px;
-            border: 1px dashed var(--border-color);
-            background-color: #FAF9F6;
-            border-radius: var(--radius-md);
-            cursor: pointer;
-            font-size: 13px;
-        }
-
-        .btn-danger {
-            background-color: #EF4444;
+        .btn-success {
+            background: #10b981;
             color: white;
             border: none;
             padding: 12px;
-            font-weight: 600;
+            font-size: 14px;
+            font-weight: 700;
             border-radius: var(--radius-md);
             cursor: pointer;
-            width: 100%;
+            transition: var(--transition);
+        }
+
+        .btn-success:hover {
+            background: #059669;
+        }
+
+        .result-box {
+            background: #f8fafc;
+            border: 1px dashed var(--falta-color);
+            border-radius: var(--radius-md);
+            padding: 15px;
             font-size: 13px;
-            text-transform: uppercase;
+            color: var(--text-main);
+            white-space: pre-wrap;
+            word-break: break-all;
+            margin-top: 10px;
         }
 
-        .btn-danger:hover {
-            background-color: #DC2626;
+        .result-box strong {
+            color: var(--primary);
         }
 
-        /* Notificación Flotante */
-        .toast {
+        /* Estilos del Modal Personalizado (Alternativa a alert/confirm) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(2px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-card {
+            background: white;
+            padding: 20px;
+            border-radius: var(--radius-lg);
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            border-top: 5px solid var(--accent);
+            transform: scale(0.9);
+            transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: scale(1);
+        }
+
+        .modal-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .modal-body {
+            font-size: 14px;
+            color: #475569;
+            margin-bottom: 20px;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .btn-modal {
+            padding: 8px 16px;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-modal-cancel {
+            background: #e2e8f0;
+            color: #475569;
+        }
+
+        .btn-modal-confirm {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Notificación Flotante (Toast) */
+        .toast-container {
             position: fixed;
             bottom: 20px;
-            right: 20px;
-            background-color: #1E293B;
-            color: #FFFFFF;
-            padding: 12px 24px;
-            border-radius: var(--radius-md);
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #1e293b;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
             font-size: 13px;
             font-weight: 600;
-            box-shadow: var(--shadow-md);
-            display: none;
-            z-index: 1000;
-            animation: slideIn 0.3s ease-out;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 1100;
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        @keyframes slideIn {
-            from { transform: translateY(100px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+        .toast-container.active {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
         }
     </style>
 </head>
 <body>
 
-    <div class="app-container">
-        <!-- Encabezado -->
-        <header>
-            <h1>Álbum Mundial 2026 🏆</h1>
-            <p>Panel Virtual de Intercambio & Registro Dinámico</p>
-        </header>
+    <header>
+        <h1>Álbum Mundial 2026 🏆</h1>
+        <p>Control de Colección Oficial - Sin Extras</p>
+    </header>
 
-        <!-- Banner de Estadísticas Globales -->
-        <section class="stats-banner">
-            <div class="stat-item">
-                <div class="stat-val" id="stat-total">0 / 900</div>
-                <div class="stat-label">Completado</div>
+    <!-- Panel de Estadísticas Generales -->
+    <section class="stats-banner">
+        <div class="stat-item">
+            <div class="stat-val" id="stat-total">0 / 980</div>
+            <div class="stat-label">Completado</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-val" id="stat-percent">0%</div>
+            <div class="stat-label">Porcentaje</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-val" id="stat-faltan">980</div>
+            <div class="stat-label">Faltantes</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-val" id="stat-repetidas">0</div>
+            <div class="stat-label">Repetidas Totales</div>
+        </div>
+    </section>
+
+    <!-- Navegación por pestañas -->
+    <nav>
+        <button onclick="switchTab('album')" id="btn-album" class="active">📖 Mi Álbum</button>
+        <button onclick="switchTab('faltantes')" id="btn-faltantes">🔍 ¿Cuáles me faltan?</button>
+        <button onclick="switchTab('cambios')" id="btn-cambios">🤝 Intercambio (Match)</button>
+        <button onclick="switchTab('datos')" id="btn-datos">⚙️ Datos</button>
+    </nav>
+
+    <main>
+        <!-- PESTAÑA 1: EL ÁLBUM -->
+        <section id="tab-album" class="tab-content active">
+            <h2>Gestión de Figuritas</h2>
+            
+            <div class="album-header-controls">
+                <div class="selector-wrapper">
+                    <select id="select-pais" class="selector-pais" onchange="renderizarSeccionSeleccionada()"></select>
+                </div>
+                <div class="album-quick-actions">
+                    <button class="btn-quick" id="btn-quick-llenar" onclick="confirmarLlenarSeccion()">Llenar Sección</button>
+                    <button class="btn-quick" id="btn-quick-vaciar" onclick="confirmarVaciarSeccion()">Vaciar Sección</button>
+                </div>
             </div>
-            <div class="stat-item">
-                <div class="stat-val" id="stat-percent">0%</div>
-                <div class="stat-label">Porcentaje</div>
+
+            <div class="search-box-wrapper">
+                <input type="text" id="album-search" class="search-input" placeholder="Buscar por código (ej: ARG, FWC, 15)..." oninput="filtrarPorBusqueda()">
             </div>
-            <div class="stat-item">
-                <div class="stat-val" id="stat-faltan">900</div>
-                <div class="stat-label">Faltantes</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-val" id="stat-repetidas">0</div>
-                <div class="stat-label">Repetidas Totales</div>
+
+            <div id="grid-album" class="grid-stickers">
+                <!-- Se poblará dinámicamente -->
             </div>
         </section>
 
-        <!-- Navegación por pestañas -->
-        <nav>
-            <button onclick="switchTab('album')" id="btn-tab-album" class="active">Mi Álbum</button>
-            <button onclick="switchTab('faltantes')" id="btn-tab-faltantes">Faltantes</button>
-            <button onclick="switchTab('cambios')" id="btn-tab-cambios">Intercambio</button>
-            <button onclick="switchTab('datos')" id="btn-tab-datos">Datos JSON</button>
-        </nav>
-
-        <main>
-            <!-- PESTAÑA 1: MI ÁLBUM -->
-            <section id="tab-album" class="tab-content active">
-                <div class="album-controls">
-                    <!-- Selector de Grupos -->
-                    <select id="select-grupo" class="select-custom" onchange="actualizarSelectorSelecciones()">
-                        <!-- Se llenará vía JS -->
-                    </select>
-                    <!-- Acciones rápidas -->
-                    <button id="btn-llenar-sel" class="btn-aux" onclick="marcarSeleccionCompleta()">Llenar Selección</button>
-                    <button id="btn-limpiar-sel" class="btn-aux" onclick="limpiarSeleccionCompleta()">Vaciar Selección</button>
+        <!-- PESTAÑA 2: BUSCADOR DE FALTANTES -->
+        <section id="tab-faltantes" class="tab-content">
+            <h2>Buscador de Faltantes</h2>
+            <div class="tool-layout">
+                <div class="instruction-card">
+                    <strong>Instrucciones:</strong> Pegá una lista de códigos de figuritas separados por comas (ej: <code>ARG1, ARG20, BRA10, FWC2, HIS11</code>) para saber cuáles de esa lista todavía <strong>no tenés</strong> en tu álbum.
                 </div>
 
-                <!-- Detalles de la Selección seleccionada -->
-                <div class="selection-header">
-                    <span class="selection-title" id="txt-seleccion-actual">Cargando...</span>
-                    <span class="selection-stats" id="txt-seleccion-stats">0 / 18</span>
+                <div class="input-group">
+                    <label class="input-label" for="txt-analizar-faltantes">Pegar Lista de Figuritas:</label>
+                    <textarea id="txt-analizar-faltantes" class="input-textarea" placeholder="Copiá tu texto y pegalo acá. Ej: ARG1, ARG20, BRA10, FWC4, HIS10..."></textarea>
                 </div>
 
-                <!-- Grilla de figuritas -->
-                <div id="grid-stickers" class="stickers-grid">
-                    <!-- Tarjetas dinámicas inyectadas vía JS -->
+                <button class="btn-primary" onclick="analizarListaFaltantes()">Analizar Faltantes</button>
+
+                <div class="input-group" style="margin-top: 15px;">
+                    <label class="input-label">Resultados del análisis:</label>
+                    <div id="box-resultado-faltantes" class="result-box">Ingresá códigos arriba para verificar cuáles te faltan.</div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- PESTAÑA 2: BUSCADOR DE FALTANTES -->
-            <section id="tab-faltantes" class="tab-content">
-                <div class="tool-layout">
-                    <div class="instruction-card">
-                        <strong>Instrucciones:</strong> Pegá una lista de códigos de figuritas separados por comas (ej: <code>ARG1, ARG5, BRA10, FRA18, USA4</code>) para saber cuáles de esa lista todavía <strong>no tenés</strong> en tu álbum.
-                    </div>
-
-                    <div class="input-group">
-                        <label class="input-label" for="txt-analizar-faltantes">Pegar Lista de Figuritas:</label>
-                        <textarea id="txt-analizar-faltantes" class="input-textarea" placeholder="Copiá tu texto y pegalo acá. Ej: ARG1, ARG2, ARG5, POR11, FRA10..."></textarea>
-                    </div>
-
-                    <button class="btn-primary" onclick="analizarListaFaltantes()">Analizar Faltantes</button>
-
-                    <div id="box-res-faltantes" class="analysis-box">
-                        <div class="analysis-title">
-                            <span>De esa lista te faltan:</span>
-                            <button class="copy-btn" onclick="copiarAlPortapapeles('res-faltantes-output')">Copiar</button>
-                        </div>
-                        <div id="res-faltantes-output" class="analysis-output"></div>
-                    </div>
+        <!-- PESTAÑA 3: INTERCAMBIO (MATCH) -->
+        <section id="tab-cambios" class="tab-content">
+            <h2>Match de Intercambio</h2>
+            <div class="tool-layout">
+                <div class="instruction-card">
+                    <strong>Instrucciones:</strong> ¿Tenés un amigo con el que quieras cambiar? Pegá acá la lista de las figuritas que a él/ella <strong>le faltan</strong>. El sistema comparará con tus <strong>repetidas</strong> y te mostrará exactamente cuáles podés ofrecerle.
                 </div>
-            </section>
 
-            <!-- PESTAÑA 3: INTERCAMBIO (MATCH) -->
-            <section id="tab-cambios" class="tab-content">
-                <div class="tool-layout">
-                    <div class="instruction-card">
-                        <strong>Instrucciones:</strong> ¿Tenés un amigo con el que quieras cambiar? Pegá acá la lista de las figuritas que a él/ella <strong>le faltan</strong>. El sistema comparará con tus <strong>repetidas</strong> y te mostrará exactamente cuáles podés ofrecerle.
-                    </div>
-
-                    <div class="input-group">
-                        <label class="input-label" for="txt-analizar-amigo">Pegar Faltantes de tu Amigo:</label>
-                        <textarea id="txt-analizar-amigo" class="input-textarea" placeholder="Ej: ARG3, BRA4, ESP18, GER12, ITA5..."></textarea>
-                    </div>
-
-                    <button class="btn-primary" onclick="analizarIntercambio()">Calcular Coincidencias</button>
-
-                    <div id="box-res-cambios" class="analysis-box">
-                        <div class="analysis-title">
-                            <span>Repetidas que le sirven a tu amigo:</span>
-                            <button class="copy-btn" onclick="copiarAlPortapapeles('res-cambios-output')">Copiar</button>
-                        </div>
-                        <div id="res-cambios-output" class="analysis-output"></div>
-                    </div>
+                <div class="input-group">
+                    <label class="input-label" for="txt-analizar-amigo">Pegar Faltantes de tu Amigo:</label>
+                    <textarea id="txt-analizar-amigo" class="input-textarea" placeholder="Ej: ARG20, BRA4, ESP19, FWC1, HIS8..."></textarea>
                 </div>
-            </section>
 
-            <!-- PESTAÑA 4: IMPORTAR / EXPORTAR -->
-            <section id="tab-datos" class="tab-content">
-                <div class="tool-layout">
-                    <div class="io-card">
-                        <h3>Exportar Copia de Seguridad</h3>
-                        <p>Descargá un archivo en formato JSON con todo tu progreso actual de figuritas para guardarlo o abrirlo en otra PC.</p>
-                        <button class="btn-primary" style="background-color: #059669;" onclick="exportarArchivoJSON()">Descargar Archivo .JSON</button>
-                    </div>
+                <button class="btn-primary" onclick="analizarIntercambio()">Calcular Coincidencias</button>
 
-                    <div class="io-card">
-                        <h3>Importar Copia de Seguridad</h3>
-                        <p>Subí un archivo .json que hayas exportado previamente para recuperar tus figuritas y continuar.</p>
-                        <div class="file-upload-wrapper">
-                            <input type="file" id="file-import" class="file-input" accept=".json" onchange="importarArchivoJSON(event)">
-                        </div>
-                    </div>
-
-                    <div class="io-card" style="border-color: #FECACA;">
-                        <h3 style="color: #DC2626;">Borrar Todos los Datos</h3>
-                        <p>Atención: Esta acción borrará permanentemente todo tu progreso y volverá el álbum a cero.</p>
-                        <button class="btn-danger" onclick="confirmarReinicioTotal()">Reiniciar Álbum por Completo</button>
-                    </div>
+                <div class="input-group" style="margin-top: 15px;">
+                    <label class="input-label">Resultados del Match:</label>
+                    <div id="box-resultado-cambios" class="result-box">Ingresá los faltantes de tu amigo para calcular coincidencias de intercambio.</div>
                 </div>
-            </section>
-        </main>
+            </div>
+        </section>
+
+        <!-- PESTAÑA 4: IMPORTACIÓN / EXPORTACIÓN -->
+        <section id="tab-datos" class="tab-content">
+            <h2>Gestión de Datos (Respaldos JSON)</h2>
+            <div class="tool-layout">
+                <div class="instruction-card">
+                    <strong>¡Protegé tu progreso!</strong> Podés descargar una copia de seguridad en tu dispositivo en formato de archivo JSON. Si cambiás de navegador o computadora, cargá el archivo aquí para recuperar tu álbum intacto.
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">Exportar datos actuales</label>
+                    <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 5px;">Descargá tu archivo de respaldo oficial en formato JSON.</p>
+                    <button class="btn-success" onclick="exportarArchivoJSON()">Descargar Archivo de Respaldos (.json)</button>
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 10px 0;">
+
+                <div class="input-group">
+                    <label class="input-label">Importar datos desde archivo</label>
+                    <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">Seleccioná un archivo .json guardado previamente. <strong>Nota: Esto sobrescribirá tus datos locales actuales.</strong></p>
+                    <input type="file" id="file-import" accept=".json" style="padding: 10px; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 14px; background: #fff;">
+                    <button class="btn-primary" style="background-color: var(--accent); color: #000; font-weight: 800; margin-top: 10px;" onclick="importarArchivoJSON()">Importar Archivo Cargado</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Contenedor del Modal Personalizado -->
+    <div class="modal-overlay" id="custom-modal">
+        <div class="modal-card">
+            <div class="modal-title" id="modal-title">Título del diálogo</div>
+            <div class="modal-body" id="modal-body">Mensaje o advertencia de control.</div>
+            <div class="modal-footer">
+                <button class="btn-modal btn-modal-cancel" id="btn-modal-cancel">Cancelar</button>
+                <button class="btn-modal btn-modal-confirm" id="btn-modal-confirm">Confirmar</button>
+            </div>
+        </div>
     </div>
 
-    <!-- Mensaje de notificación flotante -->
-    <div id="toast" class="toast">Mensaje del sistema</div>
+    <!-- Toast Flotante -->
+    <div class="toast-container" id="toast">
+        <span id="toast-text">Acción realizada con éxito</span>
+    </div>
 
     <script>
         /* --- MOTOR DE DATOS DEL MUNDIAL 2026 --- */
         
-        // Especificación de las secciones especiales (con su cantidad de cromos correspondiente)
+        // Especificación oficial de las secciones especiales de Panini (Álbum de 980)
         const SECCIONES_ESPECIALES = {
-            "INT": { nombre: "Introducción y Símbolos", cant: 8 },
-            "EST": { nombre: "Estadios Oficiales", cant: 16 },
-            "LEY": { nombre: "Leyendas del Mundial", cant: 12 }
+            "FWC": { nombre: "FIFA World Cup 2026 🏆", cant: 5 },
+            "HST": { nombre: "Sedes y Ciudades Anfitrionas 🏙️", cant: 3 },
+            "HIS": { nombre: "Historia del Mundial 📜", cant: 11 },
+            "WAP": { nombre: "We Are Panini 🏷️", cant: 1 }
         };
 
-        // 48 selecciones clasificadas oficiales en 12 grupos de 4 equipos + Sección Especializada
+        // 48 selecciones clasificadas organizadas por Grupos Oficiales
         const GRUPOS = {
             "Especiales 🏆": { 
-                "INT": "Introducción y Símbolos", 
-                "EST": "Estadios Oficiales 🏟️", 
-                "LEY": "Leyendas del Mundial ⭐️" 
+                "FWC": "FIFA World Cup 2026 🏆", 
+                "HST": "Sedes y Ciudades Anfitrionas 🏙️", 
+                "HIS": "Historia del Mundial 📜",
+                "WAP": "We Are Panini 🏷️"
             },
-            "Grupo A": { "MEX": "México", "RSA": "Sudáfrica", "KOR": "Corea del Sur", "CZE": "República Checa" },
-            "Grupo B": { "CAN": "Canadá", "BIH": "Bosnia y Herzegovina", "QAT": "Qatar", "SUI": "Suiza" },
-            "Grupo C": { "BRA": "Brasil", "MAR": "Marruecos", "HAI": "Haití", "SCO": "Escocia" },
-            "Grupo D": { "USA": "Estados Unidos", "PAR": "Paraguay", "AUS": "Australia", "TUR": "Turquía" },
-            "Grupo E": { "GER": "Alemania", "CUW": "Curazao", "CIV": "Costa de Marfil", "ECU": "Ecuador" },
-            "Grupo F": { "NED": "Países Bajos", "JPN": "Japón", "SWE": "Suecia", "TUN": "Túnez" },
-            "Grupo G": { "BEL": "Bélgica", "EGY": "Egipto", "IRN": "Irán", "NZL": "Nueva Zelanda" },
-            "Grupo H": { "ESP": "España", "CPV": "Cabo Verde", "KSA": "Arabia Saudita", "URU": "Uruguay" },
-            "Grupo I": { "FRA": "Francia", "SEN": "Senegal", "IRQ": "Irak", "NOR": "Noruega" },
-            "Grupo J": { "ARG": "Argentina", "ALG": "Argelia", "AUT": "Austria", "JOR": "Jordania" },
-            "Grupo K": { "POR": "Portugal", "COD": "Rep. Dem. del Congo", "UZB": "Uzbekistán", "COL": "Colombia" },
-            "Grupo L": { "ENG": "Inglaterra", "CRO": "Croacia", "GHA": "Ghana", "PAN": "Panamá" }
+            "Grupo A": { "MEX": "México 🇲🇽", "RSA": "Sudáfrica 🇿🇦", "KOR": "Corea del Sur 🇰🇷", "CZE": "República Checa 🇨🇿" },
+            "Grupo B": { "CAN": "Canadá 🇨🇦", "BIH": "Bosnia y Herzegovina 🇧🇦", "QAT": "Qatar 🇶🇦", "SUI": "Suiza 🇨🇭" },
+            "Grupo C": { "BRA": "Brasil 🇧🇷", "MAR": "Marruecos 🇲🇦", "HAI": "Haití 🇭🇹", "SCO": "Escocia 🏴󠁧󠁢󠁳󠁣󠁴󠁿" },
+            "Grupo D": { "USA": "Estados Unidos 🇺🇸", "PAR": "Paraguay 🇵🇾", "AUS": "Australia 🇦🇺", "TUR": "Turquía 🇹🇷" },
+            "Grupo E": { "GER": "Alemania 🇩🇪", "CUW": "Curazao 🇨🇼", "CIV": "Costa de Marfil 🇨🇮", "ECU": "Ecuador 🇪🇨" },
+            "Grupo F": { "NED": "Países Bajos 🇳🇱", "JPN": "Japón 🇯🇵", "SWE": "Suecia 🇸🇪", "TUN": "Túnez 🇹🇳" },
+            "Grupo G": { "BEL": "Bélgica 🇧🇪", "EGY": "Egipto 🇪🇬", "IRN": "Irán 🇮🇷", "NZL": "Nueva Zelanda 🇳🇿" },
+            "Grupo H": { "ESP": "España 🇪🇸", "CPV": "Cabo Verde 🇨🇻", "KSA": "Arabia Saudita 🇸🇦", "URU": "Uruguay 🇺🇾" },
+            "Grupo I": { "FRA": "Francia 🇫🇷", "SEN": "Senegal 🇸🇳", "IRQ": "Irak 🇮🇶", "NOR": "Noruega 🇳🇴" },
+            "Grupo J": { "ARG": "Argentina 🇦🇷", "ALG": "Argelia 🇩🇿", "AUT": "Austria 🇦🇹", "JOR": "Jordania 🇯🇴" },
+            "Grupo K": { "POR": "Portugal 🇵🇹", "COD": "Rep. Dem. del Congo 🇨🇩", "UZB": "Uzbekistán 🇺🇿", "COL": "Colombia 🇨🇴" },
+            "Grupo L": { "ENG": "Inglaterra 🏴󠁧󠁢󠁥󠁮󠁧󠁿", "CRO": "Croacia 🇭🇷", "GHA": "Ghana 🇬🇭", "PAN": "Panamá 🇵🇦" }
         };
 
-        // Retorna cuántas figuritas posee una sección o selección específica
+        // Devuelve cuántos cromos oficiales posee la sección o selección específica
         function obtenerCantStickers(codigo) {
             if (SECCIONES_ESPECIALES[codigo]) {
                 return SECCIONES_ESPECIALES[codigo].cant;
             }
-            return 18; // Cantidad estándar para selecciones nacionales
+            return 20; // 20 cromos oficiales por cada una de las 48 selecciones (1 escudo, 1 foto grupal y 18 jugadores)
         }
 
         let inventario = {};
 
-        // Inicialización
-        window.addEventListener('DOMContentLoaded', () => {
-            inicializarInventario();
-            construirSelectorGrupos();
-            actualizarSelectorSelecciones();
-            actualizarEstadisticasGlobales();
-        });
+        window.onload = function() {
+            inicializarModuloDatos();
+            construirSelectorPaises();
+            renderizarSeccionSeleccionada();
+            actualizarContadoresGenerales();
+        };
 
-        // Carga o crea la base de datos localmente
-        function inicializarInventario() {
-            const guardado = localStorage.getItem('album_2026_data');
-            if (guardado) {
-                try {
-                    inventario = JSON.parse(guardado);
-                    // Sanitización rápida en caso de datos rotos o actualizaciones de esquema
+        function inicializarModuloDatos() {
+            try {
+                const datosLocales = localStorage.getItem('album_mundial_2026_980_v1');
+                if (datosLocales) {
+                    inventario = JSON.parse(datosLocales);
                     validarEstructuraInventario();
-                } catch(e) {
+                } else {
                     crearInventarioVacio();
                 }
-            } else {
+            } catch (err) {
+                console.error("Error cargando inventario. Se creará un inventario nuevo para prevenir fallos.", err);
                 crearInventarioVacio();
             }
         }
 
         function crearInventarioVacio() {
             inventario = {};
-            // Recorrer grupos, especiales y países para crear el mapa
             for (const grupo in GRUPOS) {
                 for (const codPais in GRUPOS[grupo]) {
                     const cantStickers = obtenerCantStickers(codPais);
@@ -750,57 +823,270 @@
         }
 
         function validarEstructuraInventario() {
-            // Verifica que existan todos los países, especiales y números
+            const inventarioLimpio = {};
             for (const grupo in GRUPOS) {
                 for (const codPais in GRUPOS[grupo]) {
                     const cantStickers = obtenerCantStickers(codPais);
                     for (let i = 1; i <= cantStickers; i++) {
                         const key = `${codPais}${i}`;
-                        if (inventario[key] === undefined) {
-                            inventario[key] = 0;
-                        }
+                        inventarioLimpio[key] = typeof inventario[key] === 'number' ? inventario[key] : 0;
                     }
                 }
             }
+            inventario = inventarioLimpio;
+            guardarInventario();
         }
 
         function guardarInventario() {
-            localStorage.setItem('album_2026_data', JSON.stringify(inventario));
+            localStorage.setItem('album_mundial_2026_980_v1', JSON.stringify(inventario));
         }
 
-        // Construye el selector de grupos y países
-        function construirSelectorGrupos() {
-            const select = document.getElementById('select-grupo');
+        /* --- SISTEMA DE DIÁLOGOS Y NOTIFICACIONES NATIVAS (Sin alerts ni confirms) --- */
+        function mostrarNotificacion(mensaje) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-text').innerText = mensaje;
+            toast.classList.add('active');
+            setTimeout(() => {
+                toast.classList.remove('active');
+            }, 2500);
+        }
+
+        function abrirModalConfirmacion(titulo, mensaje, callbackConfirmacion) {
+            const overlay = document.getElementById('custom-modal');
+            document.getElementById('modal-title').innerText = titulo;
+            document.getElementById('modal-body').innerText = mensaje;
+
+            const btnConfirmar = document.getElementById('btn-modal-confirm');
+            const btnCancelar = document.getElementById('btn-modal-cancel');
+
+            // Limpiamos los eventos previos para evitar ejecuciones múltiples
+            const nuevoConfirmar = btnConfirmar.cloneNode(true);
+            const nuevoCancelar = btnCancelar.cloneNode(true);
+            btnConfirmar.parentNode.replaceChild(nuevoConfirmar, btnConfirmar);
+            btnCancelar.parentNode.replaceChild(nuevoCancelar, btnCancelar);
+
+            overlay.classList.add('active');
+
+            nuevoConfirmar.onclick = function() {
+                overlay.classList.remove('active');
+                callbackConfirmacion();
+            };
+
+            nuevoCancelar.onclick = function() {
+                overlay.classList.remove('active');
+            };
+        }
+
+        /* --- INTERFAZ DE USUARIO Y RENDERIZADO DEL ÁLBUM (980 Cromos) --- */
+        function construirSelectorPaises() {
+            const select = document.getElementById('select-pais');
             select.innerHTML = '';
 
-            let totalMaximo = 0;
-            for (const grupo in GRUPOS) {
-                for (const codPais in GRUPOS[grupo]) {
-                    totalMaximo += obtenerCantStickers(codPais);
-                }
-            }
+            // Opción global de todo el álbum
+            const optTodo = document.createElement('option');
+            optTodo.value = "VER_TODO";
+            optTodo.textContent = "🌍 VER TODO EL ÁLBUM (980 cromos)";
+            select.appendChild(optTodo);
 
-            // Opción global de Ver Todo
-            const optTodos = document.createElement('option');
-            optTodos.value = 'TODOS';
-            optTodos.textContent = `🌍 VER TODO EL ÁLBUM (${totalMaximo})`;
-            select.appendChild(optTodos);
-
+            // Poblar grupos y selecciones
             for (const grupo in GRUPOS) {
                 const optGroup = document.createElement('optgroup');
                 optGroup.label = grupo;
 
                 for (const codPais in GRUPOS[grupo]) {
-                    const option = document.createElement('option');
-                    option.value = codPais;
-                    option.textContent = `${codPais} - ${GRUPOS[grupo][codPais]} (${obtenerCantStickers(codPais)})`;
-                    optGroup.appendChild(option);
+                    const opt = document.createElement('option');
+                    opt.value = codPais;
+                    opt.textContent = `${codPais} - ${GRUPOS[grupo][codPais]}`;
+                    select.appendChild(opt);
                 }
-                select.appendChild(optGroup);
             }
         }
 
-        // Navegación nativa de la SPA
+        function renderizarSeccionSeleccionada() {
+            const selectVal = document.getElementById('select-pais').value;
+            const grid = document.getElementById('grid-album');
+            const btnLlenar = document.getElementById('btn-quick-llenar');
+            const btnVaciar = document.getElementById('btn-quick-vaciar');
+
+            grid.innerHTML = '';
+
+            // Adaptar textos de acciones rápidas según el contexto de la vista
+            if (selectVal === "VER_TODO") {
+                btnLlenar.textContent = "Llenar TODO el Álbum";
+                btnVaciar.textContent = "Vaciar TODO el Álbum";
+            } else {
+                btnLlenar.textContent = `Llenar ${selectVal}`;
+                btnVaciar.textContent = `Vaciar ${selectVal}`;
+            }
+
+            let htmlString = "";
+
+            if (selectVal === "VER_TODO") {
+                for (const grupo in GRUPOS) {
+                    for (const codPais in GRUPOS[grupo]) {
+                        htmlString += construirBloqueHtmlSeccion(codPais);
+                    }
+                }
+            } else {
+                htmlString = construirBloqueHtmlSeccion(selectVal);
+            }
+
+            grid.innerHTML = htmlString;
+        }
+
+        function construirBloqueHtmlSeccion(codPais) {
+            let chunk = "";
+            const cantStickers = obtenerCantStickers(codPais);
+            for (let i = 1; i <= cantStickers; i++) {
+                const key = `${codPais}${i}`;
+                const cantidad = inventario[key] || 0;
+                const claseEstado = cantidad > 0 ? (cantidad > 1 ? 'repetida' : 'tengo') : '';
+                
+                let bLabel = "Falta";
+                if (cantidad === 1) bLabel = "Tengo";
+                if (cantidad > 1) bLabel = `Rep. (+${cantidad - 1})`;
+
+                chunk += `
+                    <div class="sticker-card ${claseEstado}" data-codigo="${key}">
+                        <div class="sticker-code">${key}</div>
+                        <div class="sticker-badge">${bLabel}</div>
+                        <div class="sticker-controls">
+                            <button class="btn-ctrl btn-minus" onclick="alterarCantidadSticker('${key}', -1)">-</button>
+                            <button class="btn-ctrl btn-plus" onclick="alterarCantidadSticker('${key}', 1)">+</button>
+                        </div>
+                    </div>
+                `;
+            }
+            return chunk;
+        }
+
+        function alterarCantidadSticker(key, delta) {
+            let cant = inventario[key] || 0;
+            cant = Math.max(0, cant + delta);
+            inventario[key] = cant;
+            guardarInventario();
+            actualizarContadoresGenerales();
+
+            // Refrescar el elemento en el DOM de forma específica para mejor experiencia visual
+            const card = document.querySelector(`.sticker-card[data-codigo="${key}"]`);
+            if (card) {
+                card.className = `sticker-card ${cant > 0 ? (cant > 1 ? 'repetida' : 'tengo') : ''}`;
+                
+                let bLabel = "Falta";
+                if (cant === 1) bLabel = "Tengo";
+                if (cant > 1) bLabel = `Rep. (+${cant - 1})`;
+
+                const badge = card.querySelector('.sticker-badge');
+                if (badge) badge.innerText = bLabel;
+            }
+        }
+
+        function filtrarPorBusqueda() {
+            const query = document.getElementById('album-search').value.trim().toUpperCase();
+            const cards = document.querySelectorAll('.sticker-card');
+
+            cards.forEach(card => {
+                const cod = card.getAttribute('data-codigo');
+                if (query === "" || cod.includes(query)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        /* --- ACCIONES RÁPIDAS (Llenado y Vaciado) --- */
+        function confirmarLlenarSeccion() {
+            const selectVal = document.getElementById('select-pais').value;
+            if (selectVal === "VER_TODO") {
+                abrirModalConfirmacion(
+                    "¿Llenar TODO el álbum?", 
+                    "Confirmá si deseás marcar las 980 figuritas como obtenidas (1 de cada una). Esto no afectará a tus repetidas.",
+                    () => {
+                        for (const key in inventario) {
+                            if (inventario[key] === 0) inventario[key] = 1;
+                        }
+                        guardarInventario();
+                        renderizarSeccionSeleccionada();
+                        actualizarContadoresGenerales();
+                        mostrarNotificacion("¡Álbum completado al 100%!");
+                    }
+                );
+            } else {
+                abrirModalConfirmacion(
+                    `¿Llenar sección ${selectVal}?`,
+                    `Marcarás todas las figuritas de ${selectVal} como obtenidas (con cantidad 1).`,
+                    () => {
+                        const cant = obtenerCantStickers(selectVal);
+                        for (let i = 1; i <= cant; i++) {
+                            const key = `${selectVal}${i}`;
+                            if (inventario[key] === 0) inventario[key] = 1;
+                        }
+                        guardarInventario();
+                        renderizarSeccionSeleccionada();
+                        actualizarContadoresGenerales();
+                        mostrarNotificacion(`Sección ${selectVal} marcada como obtenida.`);
+                    }
+                );
+            }
+        }
+
+        function confirmarVaciarSeccion() {
+            const selectVal = document.getElementById('select-pais').value;
+            if (selectVal === "VER_TODO") {
+                abrirModalConfirmacion(
+                    "⚠️ ¿VACIAS TODO TU ÁLBUM?", 
+                    "Esta acción no se puede deshacer. Se restablecerá el progreso de todas las figuritas y repetidas a cero.",
+                    () => {
+                        crearInventarioVacio();
+                        renderizarSeccionSeleccionada();
+                        actualizarContadoresGenerales();
+                        mostrarNotificacion("Álbum completamente restablecido.");
+                    }
+                );
+            } else {
+                abrirModalConfirmacion(
+                    `¿Vaciar sección ${selectVal}?`,
+                    `Se restablecerá a 0 la posesión y repetidas de todos los cromos de ${selectVal}.`,
+                    () => {
+                        const cant = obtenerCantStickers(selectVal);
+                        for (let i = 1; i <= cant; i++) {
+                            inventario[`${selectVal}${i}`] = 0;
+                        }
+                        guardarInventario();
+                        renderizarSeccionSeleccionada();
+                        actualizarContadoresGenerales();
+                        mostrarNotificacion(`Sección ${selectVal} vaciada con éxito.`);
+                    }
+                );
+            }
+        }
+
+        function actualizarContadoresGenerales() {
+            let totalDiferentes = 0;
+            let totalRepetidas = 0;
+            const totalAlbum = 980; // Oficial 2026
+
+            for (const key in inventario) {
+                const cant = inventario[key] || 0;
+                if (cant > 0) {
+                    totalDiferentes++;
+                    if (cant > 1) {
+                        totalRepetidas += (cant - 1);
+                    }
+                }
+            }
+
+            const faltantes = totalAlbum - totalDiferentes;
+            const porcentaje = ((totalDiferentes / totalAlbum) * 100).toFixed(1);
+
+            document.getElementById('stat-total').innerText = `${totalDiferentes} / ${totalAlbum}`;
+            document.getElementById('stat-percent').innerText = `${porcentaje}%`;
+            document.getElementById('stat-faltan').innerText = faltantes;
+            document.getElementById('stat-repetidas').innerText = totalRepetidas;
+        }
+
+        // NAVEGACIÓN SPA NATIVA
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(tab => {
                 tab.classList.remove('active');
@@ -810,377 +1096,210 @@
             });
 
             document.getElementById(`tab-${tabId}`).classList.add('active');
-            document.getElementById(`btn-tab-${tabId}`).classList.add('active');
-
-            // Actualizar la grilla en caso de volver al Álbum
-            if (tabId === 'album') {
-                renderizarGrillaStickers();
-            }
+            document.getElementById(`btn-${tabId}`).classList.add('active');
         }
 
-        // Re-renderiza las figuritas correspondientes al país seleccionado (o todas)
-        function renderizarGrillaStickers() {
-            const codPais = document.getElementById('select-grupo').value;
-            const grid = document.getElementById('grid-stickers');
-            
-            let totalOwnedInView = 0;
-            let totalPossibleInView = 0;
-
-            let paisesARenderizar = [];
-
-            if (codPais === 'TODOS') {
-                document.getElementById('txt-seleccion-actual').textContent = "Visualización Completa del Álbum";
-                // Llenar lista con todas las selecciones y especiales
-                for (const grupo in GRUPOS) {
-                    for (const cod in GRUPOS[grupo]) {
-                        paisesARenderizar.push({ cod: cod, nombre: GRUPOS[grupo][cod] });
-                    }
-                }
-            } else {
-                const paisNombre = obtenerNombrePais(codPais);
-                document.getElementById('txt-seleccion-actual').textContent = `${paisNombre} (${codPais})`;
-                paisesARenderizar.push({ cod: codPais, nombre: paisNombre });
-            }
-
-            // Construcción del HTML mediante un acumulador rápido en memoria
-            let htmlAcumulado = '';
-
-            paisesARenderizar.forEach(paisObj => {
-                const cod = paisObj.cod;
-                const cantStickers = obtenerCantStickers(cod);
-                
-                for (let i = 1; i <= cantStickers; i++) {
-                    totalPossibleInView++;
-                    const codigo = `${cod}${i}`;
-                    const cantidad = inventario[codigo] || 0;
-
-                    let cardClass = 'sticker-card';
-                    let estadoText = 'Falta';
-
-                    if (cantidad === 1) {
-                        cardClass = 'sticker-card owned';
-                        estadoText = 'Tengo';
-                        totalOwnedInView++;
-                    } else if (cantidad > 1) {
-                        cardClass = 'sticker-card repeated';
-                        estadoText = 'Repetida';
-                        totalOwnedInView++;
-                    }
-
-                    const repetidasBadge = cantidad > 1 ? `<div class="rep-badge">+${cantidad - 1}</div>` : '';
-
-                    htmlAcumulado += `
-                        <div id="card-${codigo}" class="${cardClass}">
-                            ${repetidasBadge}
-                            <div class="sticker-code">${codigo}</div>
-                            <div class="sticker-state-lbl">${estadoText}</div>
-                            <div class="card-buttons">
-                                <button class="btn-card" onclick="modificarFigurita('${codigo}', -1)">-</button>
-                                <button class="btn-card" onclick="modificarFigurita('${codigo}', 1)">+</button>
-                            </div>
-                        </div>
-                    `;
-                }
-            });
-
-            grid.innerHTML = htmlAcumulado;
-            document.getElementById('txt-seleccion-stats').textContent = `${totalOwnedInView} / ${totalPossibleInView}`;
-
-            // Actualizar etiquetas de botones de acción rápida
-            const btnLlenar = document.getElementById('btn-llenar-sel');
-            const btnLimpiar = document.getElementById('btn-limpiar-sel');
-            if (codPais === 'TODOS') {
-                btnLlenar.textContent = "Llenar Álbum Completo";
-                btnLimpiar.textContent = "Vaciar Álbum Completo";
-            } else {
-                btnLlenar.textContent = "Llenar Selección";
-                btnLimpiar.textContent = "Vaciar Selección";
-            }
-        }
-
-        function actualizarSelectorSelecciones() {
-            renderizarGrillaStickers();
-        }
-
-        // Modifica la cantidad de una figurita individual (+1 / -1)
-        function modificarFigurita(codigo, cambio) {
-            let actual = inventario[codigo] || 0;
-            let nueva = actual + cambio;
-            if (nueva < 0) nueva = 0;
-
-            inventario[codigo] = nueva;
-            guardarInventario();
-            renderizarGrillaStickers();
-            actualizarEstadisticasGlobales();
-        }
-
-        // Llenar toda la selección actual o todo el álbum
-        function marcarSeleccionCompleta() {
-            const codPais = document.getElementById('select-grupo').value;
-            
-            if (codPais === 'TODOS') {
-                const seguro = confirm("¿Estás seguro de que querés marcar las 900 figuritas del álbum completo como poseídas?");
-                if (!seguro) return;
-                for (const key in inventario) {
-                    if (inventario[key] === 0) {
-                        inventario[key] = 1;
-                    }
-                }
-                showToast("¡Todo el álbum marcado como poseído!");
-            } else {
-                const cantStickers = obtenerCantStickers(codPais);
-                for (let i = 1; i <= cantStickers; i++) {
-                    const key = `${codPais}${i}`;
-                    if (inventario[key] === 0) {
-                        inventario[key] = 1;
-                    }
-                }
-                showToast(`¡Toda la selección de ${codPais} marcada como poseída!`);
-            }
-            
-            guardarInventario();
-            renderizarGrillaStickers();
-            actualizarEstadisticasGlobales();
-        }
-
-        // Vaciar toda la selección actual o todo el álbum
-        function limpiarSeleccionCompleta() {
-            const codPais = document.getElementById('select-grupo').value;
-            
-            if (codPais === 'TODOS') {
-                const seguro = confirm("¿Estás completamente seguro de que querés borrar el progreso de todo tu álbum? Esta acción es irreversible.");
-                if (!seguro) return;
-                for (const key in inventario) {
-                    inventario[key] = 0;
-                }
-                showToast("Se restableció todo el álbum a cero.");
-            } else {
-                const cantStickers = obtenerCantStickers(codPais);
-                for (let i = 1; i <= cantStickers; i++) {
-                    inventario[`${codPais}${i}`] = 0;
-                }
-                showToast(`Se restableció la selección de ${codPais} a cero.`);
-            }
-            
-            guardarInventario();
-            renderizarGrillaStickers();
-            actualizarEstadisticasGlobales();
-        }
-
-        function actualizarEstadisticasGlobales() {
-            let totalUnicas = 0;
-            let totalRepetidas = 0;
-            let totalMaximo = 0;
-
-            for (const grupo in GRUPOS) {
-                for (const codPais in GRUPOS[grupo]) {
-                    totalMaximo += obtenerCantStickers(codPais);
-                }
-            }
-
-            for (const key in inventario) {
-                const cant = inventario[key];
-                if (cant > 0) {
-                    totalUnicas++;
-                }
-                if (cant > 1) {
-                    totalRepetidas += (cant - 1);
-                }
-            }
-
-            const faltantes = totalMaximo - totalUnicas;
-            const porcentaje = ((totalUnicas / totalMaximo) * 100).toFixed(1);
-
-            document.getElementById('stat-total').textContent = `${totalUnicas} / ${totalMaximo}`;
-            document.getElementById('stat-percent').textContent = `${porcentaje}%`;
-            document.getElementById('stat-faltan').textContent = faltantes;
-            document.getElementById('stat-repetidas').textContent = totalRepetidas;
-        }
-
-        // Parsea texto plano, remueve caracteres raros y devuelve una lista limpia de códigos válidos
-        function extraerCodigosDeTexto(texto) {
-            if (!texto) return [];
-            // Dividir por comas, saltos de línea o espacios, limpiar y pasar a mayúsculas
-            return texto.toUpperCase()
-                .split(/[\n,; \s]+/)
-                .map(cod => cod.trim())
-                .filter(cod => {
-                    // Validar expresión regular de formato: ej ARG12
-                    return /^[A-Z]{3}[1-9][0-9]?$/.test(cod);
-                });
-        }
-
-        // Analiza cuáles figuritas de la lista ingresada NO posees
+        /* --- STREAMING_CHUNK: Implementando la lógica del analizador de listas de faltantes por comas --- */
         function analizarListaFaltantes() {
-            const textInput = document.getElementById('txt-analizar-faltantes').value;
-            const codigosIngresados = extraerCodigosDeTexto(textInput);
+            const rawText = document.getElementById('txt-analizar-faltantes').value;
+            const resultBox = document.getElementById('box-resultado-faltantes');
 
-            if (codigosIngresados.length === 0) {
-                showToast("Por favor, ingresá códigos válidos.");
+            if (!rawText.trim()) {
+                resultBox.innerHTML = "<span style='color: var(--text-muted);'>Ingresá códigos arriba para verificar cuáles te faltan.</span>";
                 return;
             }
 
-            // Filtrar duplicados en la lista de consulta del usuario
-            const unicosIngresados = [...new Set(codigosIngresados)];
+            // Normalización y parseo estricto del texto ingresado
+            const tokens = rawText.toUpperCase().split(',');
+            const codigosAnalizados = [];
+            const codigosInvalidos = [];
 
-            const faltantesDetectadas = unicosIngresados.filter(codigo => {
-                // Si el código existe en el catálogo pero está en 0
-                return inventario[codigo] === 0;
+            tokens.forEach(tk => {
+                const limpio = tk.trim();
+                if (limpio === "") return;
+
+                // Validación de estructura para evitar falsas entradas (ej. ARG1, HIS11)
+                if (validarCodigoCromo(limpio)) {
+                    codigosAnalizados.push(limpio);
+                } else {
+                    codigosInvalidos.push(limpio);
+                }
             });
 
-            const boxResult = document.getElementById('box-res-faltantes');
-            const outputElement = document.getElementById('res-faltantes-output');
-
-            boxResult.classList.add('active');
-
-            if (faltantesDetectadas.length > 0) {
-                outputElement.textContent = faltantesDetectadas.join(', ');
-            } else {
-                outputElement.textContent = "¡Buenas noticias! No te falta ninguna de las figuritas ingresadas en tu lista.";
+            if (codigosAnalizados.length === 0) {
+                resultBox.innerHTML = "<span style='color: #ef4444;'>No se detectaron códigos de figuritas válidos. Asegurate de seguir el formato (ej. ARG1, BRA15, FWC3).</span>";
+                return;
             }
+
+            // Filtro de faltantes reales
+            const faltantesReales = codigosAnalizados.filter(cod => {
+                return inventario[cod] === 0;
+            });
+
+            // Remover duplicados en el informe final
+            const unicosFaltantes = [...new Set(faltantesReales)];
+
+            let htmlOutput = `Se analizaron <strong>${codigosAnalizados.length}</strong> códigos ingresados de forma válida.<br><br>`;
+
+            if (unicosFaltantes.length > 0) {
+                htmlOutput += `Te faltan adquirir: <span style='color: #ef4444; font-weight: 800;'>${unicosFaltantes.length} cromos</span> de la lista:<br><br>`;
+                htmlOutput += `<span style='font-size: 15px; letter-spacing: 0.5px;'>${unicosFaltantes.join(', ')}</span>`;
+            } else {
+                htmlOutput += "<span style='color: var(--tengo-color); font-weight: 800;'>🎉 ¡Impecable! Ya poseés en tu álbum todas las figuritas analizadas en esa lista.</span>";
+            }
+
+            if (codigosInvalidos.length > 0) {
+                htmlOutput += `<br><br><span style='color: var(--text-muted); font-size: 11px;'>* Se ignoraron ${codigosInvalidos.length} códigos con formato incorrecto para el Álbum 2026: [${codigosInvalidos.join(', ')}]</span>`;
+            }
+
+            resultBox.innerHTML = htmlOutput;
         }
 
-        // Analiza qué figuritas le faltan a tu amigo y tú las tienes repetidas
+        /* --- STREAMING_CHUNK: Implementando la lógica matemática del analizador de intercambios (Match) --- */
         function analizarIntercambio() {
-            const textInput = document.getElementById('txt-analizar-amigo').value;
-            const codigosAmigo = extraerCodigosDeTexto(textInput);
+            const rawText = document.getElementById('txt-analizar-amigo').value;
+            const resultBox = document.getElementById('box-resultado-cambios');
+
+            if (!rawText.trim()) {
+                resultBox.innerHTML = "<span style='color: var(--text-muted);'>Ingresá los faltantes de tu amigo para calcular coincidencias de intercambio.</span>";
+                return;
+            }
+
+            const tokens = rawText.toUpperCase().split(',');
+            const codigosAmigo = [];
+            const codigosInvalidos = [];
+
+            tokens.forEach(tk => {
+                const limpio = tk.trim();
+                if (limpio === "") return;
+
+                if (validarCodigoCromo(limpio)) {
+                    codigosAmigo.push(limpio);
+                } else {
+                    codigosInvalidos.push(limpio);
+                }
+            });
 
             if (codigosAmigo.length === 0) {
-                showToast("Por favor, ingresá códigos válidos.");
+                resultBox.innerHTML = "<span style='color: #ef4444;'>No se detectaron códigos de figuritas válidos de tu amigo.</span>";
                 return;
             }
 
-            const unicosAmigo = [...new Set(codigosAmigo)];
-
-            // Comparar contra nuestras repetidas (inventario[codigo] > 1)
-            const matchesParaCambiar = unicosAmigo.filter(codigo => {
-                return inventario[codigo] > 1;
+            // Filtrar cuáles de las figuritas que a tu amigo le faltan las tenés vos como "REPETIDAS" (cantidad >= 2)
+            const matchOfrecibles = codigosAmigo.filter(cod => {
+                const miCantidad = inventario[cod] || 0;
+                return miCantidad > 1; // Poseo repetidas
             });
 
-            const boxResult = document.getElementById('box-res-cambios');
-            const outputElement = document.getElementById('res-cambios-output');
+            const unicosMatch = [...new Set(matchOfrecibles)];
 
-            boxResult.classList.add('active');
+            let htmlOutput = `Se analizaron <strong>${codigosAmigo.length}</strong> faltantes de tu amigo.<br><br>`;
 
-            if (matchesParaCambiar.length > 0) {
-                // Mostrar con formato indicando cuántas repetidas de cada una tenés disponibles
-                const formatoLindo = matchesParaCambiar.map(cod => {
-                    const disponibles = inventario[cod] - 1;
-                    return `${cod} (tenés ${disponibles} extra)`;
-                }).join('\n');
-                
-                outputElement.textContent = formatoLindo;
+            if (unicosMatch.length > 0) {
+                htmlOutput += `¡Excelente! Tenés para ofrecerle <span style='color: var(--repetida-color); font-weight: 800;'>${unicosMatch.length} figuritas repetidas</span> que le faltan:<br><br>`;
+                htmlOutput += `<span style='font-size: 15px; letter-spacing: 0.5px;'>${unicosMatch.join(', ')}</span>`;
             } else {
-                outputElement.textContent = "No tenés ninguna figurita repetida de las que le faltan a tu amigo.";
+                htmlOutput += "<span style='color: #ef4444; font-weight: 800;'>No tenés repetida ninguna de las figuritas que tu amigo está necesitando actualmente.</span>";
             }
+
+            if (codigosInvalidos.length > 0) {
+                htmlOutput += `<br><br><span style='color: var(--text-muted); font-size: 11px;'>* Códigos del amigo ignorados por formato incorrecto: [${codigosInvalidos.join(', ')}]</span>`;
+            }
+
+            resultBox.innerHTML = htmlOutput;
         }
 
-        // Exporta un archivo JSON físico listo para descargar
+        // Validación estricta de estructura para asegurar que el código de figurita es real en la base del álbum de 980
+        function validarCodigoCromo(cod) {
+            // Expresión regular para separar letras (código selección/sección) de números
+            const match = cod.match(/^([A-Z]{3})([0-9]+)$/);
+            if (!match) return false;
+
+            const prefijo = match[1];
+            const numero = parseInt(match[2], 10);
+
+            // Verificar si el prefijo existe
+            let esValido = false;
+            for (const grupo in GRUPOS) {
+                if (GRUPOS[grupo][prefijo] !== undefined) {
+                    esValido = true;
+                    break;
+                }
+            }
+
+            if (!esValido) return false;
+
+            const limiteMax = obtenerCantStickers(prefijo);
+            return (numero >= 1 && numero <= limiteMax);
+        }
+
+        /* --- STREAMING_CHUNK: Implementando módulo de carga e importación nativa de archivos JSON --- */
+        /* --- EXPORTAR E IMPORTAR DATOS REALES --- */
         function exportarArchivoJSON() {
             try {
                 const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(inventario, null, 2));
                 const downloadAnchor = document.createElement('a');
-                
-                const fecha = new Date().toISOString().slice(0, 10);
-                
                 downloadAnchor.setAttribute("href", dataStr);
-                downloadAnchor.setAttribute("download", `Album_Mundial_2026_${fecha}.json`);
+                downloadAnchor.setAttribute("download", "album_mundial_2026_980_backup.json");
                 document.body.appendChild(downloadAnchor);
                 downloadAnchor.click();
                 downloadAnchor.remove();
-                
-                showToast("¡Archivo de copia descargado con éxito!");
-            } catch(e) {
-                showToast("Error al exportar los datos.");
+                mostrarNotificacion("¡Archivo de respaldo descargado con éxito!");
+            } catch (err) {
+                mostrarNotificacion("Error al intentar generar la descarga.");
+                console.error(err);
             }
         }
 
-        // Importa archivo JSON y valida la integridad del mismo
-        function importarArchivoJSON(event) {
-            const file = event.target.files[0];
-            if (!file) return;
+        function importarArchivoJSON() {
+            const inputArchivo = document.getElementById('file-import');
+            if (inputArchivo.files.length === 0) {
+                abrirModalConfirmacion(
+                    "Error de Importación",
+                    "Asegurate de haber seleccionado previamente tu archivo .json antes de hacer click en importar.",
+                    () => {}
+                );
+                return;
+            }
 
-            const reader = new FileReader();
-            reader.onload = function(e) {
+            const archivo = inputArchivo.files[0];
+            const lector = new FileReader();
+
+            lector.onload = function(e) {
                 try {
-                    const parsedData = JSON.parse(e.target.result);
+                    const datosImportados = JSON.parse(e.target.result);
                     
-                    // Verificación de integridad simple
-                    let llavesValidas = 0;
-                    for (const key in parsedData) {
-                        if (/^[A-Z]{3}[1-9][0-9]?$/.test(key) && typeof parsedData[key] === 'number') {
-                            llavesValidas++;
+                    // Validación de que el JSON tiene el formato correcto
+                    if (typeof datosImportados === 'object' && datosImportados !== null) {
+                        
+                        // Validar si al menos un código clave del mundial existe (ej: MEX1 o FWC1)
+                        if (datosImportados["MEX1"] !== undefined || datosImportados["FWC1"] !== undefined) {
+                            inventario = datosImportados;
+                            validarEstructuraInventario(); // Limpia, migra y asegura compatibilidad con 980 cromos
+                            renderizarSeccionSeleccionada();
+                            actualizarContadoresGenerales();
+                            mostrarNotificacion("¡Álbum restaurado con éxito!");
+                        } else {
+                            abrirModalConfirmacion(
+                                "Archivo No Válido",
+                                "El archivo JSON cargado no posee el formato de datos del Álbum Mundial 2026.",
+                                () => {}
+                            );
                         }
-                    }
-
-                    if (llavesValidas > 100) { // Umbral mínimo razonable para asegurar que es un álbum válido
-                        inventario = parsedData;
-                        validarEstructuraInventario(); // Asegurarse de que no queden huecos
-                        guardarInventario();
-                        actualizarEstadisticasGlobales();
-                        renderizarGrillaStickers();
-                        showToast("¡Álbum cargado e importado con éxito!");
                     } else {
-                        showToast("El archivo JSON seleccionado no es un formato válido de álbum.");
+                        throw new Error("Formato inválido.");
                     }
-                } catch(err) {
-                    showToast("Error: No se pudo leer el archivo seleccionado.");
+                } catch (err) {
+                    console.error(err);
+                    abrirModalConfirmacion(
+                        "Error de Lectura",
+                        "No se pudo procesar el archivo. Comprobá que sea un JSON íntegro y que no esté corrupto.",
+                        () => {}
+                    );
                 }
             };
-            reader.readAsText(file);
-        }
 
-        // Reinicia todo a 0
-        function confirmarReinicioTotal() {
-            const seguro = confirm("¿Estás completamente seguro de que querés reiniciar tu álbum? Perderás todo el progreso registrado.");
-            if (seguro) {
-                crearInventarioVacio();
-                renderizarGrillaStickers();
-                actualizarEstadisticasGlobales();
-                showToast("El álbum se ha restablecido por completo.");
-            }
-        }
-
-        /* --- AUXILIARES --- */
-        
-        // Retorna el nombre legible de una selección según su código de 3 letras
-        function obtenerNombrePais(codigo) {
-            for (const grupo in GRUPOS) {
-                if (GRUPOS[grupo][codigo]) {
-                    return GRUPOS[grupo][codigo];
-                }
-            }
-            return codigo;
-        }
-
-        // Sistema dinámico de alertas flotantes (Toast) en lugar de molestos alerts de navegador
-        function showToast(mensaje) {
-            const toast = document.getElementById('toast');
-            toast.textContent = mensaje;
-            toast.style.display = 'block';
-            setTimeout(() => {
-                toast.style.display = 'none';
-            }, 3000);
-        }
-
-        // Copia texto de un elemento al portapapeles de forma segura
-        function copiarAlPortapapeles(elementId) {
-            const element = document.getElementById(elementId);
-            const text = element.textContent;
-            
-            // Creamos un textarea invisible auxiliar para copiar de forma robusta
-            const auxTextArea = document.createElement("textarea");
-            auxTextArea.value = text;
-            document.body.appendChild(auxTextArea);
-            auxTextArea.select();
-            
-            try {
-                document.execCommand("copy");
-                showToast("¡Copiado al portapapeles!");
-            } catch (err) {
-                showToast("No se pudo copiar automáticamente.");
-            }
-            document.body.removeChild(auxTextArea);
+            lector.readAsText(archivo);
         }
     </script>
 </body>
