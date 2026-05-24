@@ -601,7 +601,7 @@
 <body>
 
     <header>
-        <h1>Álbum Mundial 2026 🏆</h1>
+        <h1>Álbum Mundial 2026 🏆</h1> (v2)
         <p>Control de Colección Oficial - Sin Extras</p>
     </header>
 
@@ -661,8 +661,29 @@
         <section id="tab-faltantes" class="tab-content">
             <h2>Buscador de Faltantes</h2>
             <div class="tool-layout">
+                <!-- NUEVO: Generador automático de lista de faltantes -->
+                <div class="instruction-card" style="border-left-color: var(--primary); background: rgba(128, 0, 32, 0.04); padding: 15px; border-radius: var(--radius-md);">
+                    <strong style="color: var(--primary);">📋 Mis Faltantes Totales:</strong>
+                    <p style="font-size: 12px; color: var(--text-muted); margin-top: 3px; margin-bottom: 10px;">
+                        Generá la lista completa y ordenada de todas las figuritas que todavía no tenés en tu álbum.
+                    </p>
+                    <button class="btn-primary" style="width: 100%;" onclick="generarTodosLosFaltantes()">Generar Mi Lista de Faltantes</button>
+                </div>
+
+                <div id="wrapper-todos-faltantes" style="display: none; margin-top: -5px; margin-bottom: 15px; animation: fadeIn 0.3s ease;">
+                    <div class="input-group">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                            <span class="input-label" id="lbl-cant-faltantes" style="color: var(--primary); font-weight: 800;"></span>
+                            <button class="btn-quick" style="padding: 4px 10px; font-size: 11px;" onclick="copiarFaltantesAlPortapapeles()">Copiar Lista</button>
+                        </div>
+                        <div id="box-todos-faltantes" class="result-box" style="background: #ffffff; max-height: 180px; overflow-y: auto; border: 1px solid var(--border-color); font-family: monospace;"></div>
+                    </div>
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 5px 0;">
+
                 <div class="instruction-card">
-                    <strong>Instrucciones:</strong> Pegá una lista de códigos de figuritas separados por comas (ej: <code>ARG1, ARG20, BRA10, FWC2, HIS11</code>) para saber cuáles de esa lista todavía <strong>no tenés</strong> en tu álbum.
+                    <strong>Analizar lista externa:</strong> Pegá una lista de códigos de figuritas separados por comas (ej: <code>ARG1, ARG20, BRA10, FWC2, HIS11</code>) para saber cuáles de esa lista todavía <strong>no tenés</strong> en tu álbum.
                 </div>
 
                 <div class="input-group">
@@ -1097,6 +1118,67 @@
 
             document.getElementById(`tab-${tabId}`).classList.add('active');
             document.getElementById(`btn-${tabId}`).classList.add('active');
+        }
+
+        /* --- STREAMING_CHUNK: Implementando generador automático de faltantes totales --- */
+        function generarTodosLosFaltantes() {
+            const faltantes = [];
+            
+            // Recorrer de forma ordenada todos los grupos, selecciones y especiales
+            for (const grupo in GRUPOS) {
+                for (const codPais in GRUPOS[grupo]) {
+                    const cantStickers = obtenerCantStickers(codPais);
+                    for (let i = 1; i <= cantStickers; i++) {
+                        const key = `${codPais}${i}`;
+                        const cantidad = inventario[key] || 0;
+                        if (cantidad === 0) {
+                            faltantes.push(key);
+                        }
+                    }
+                }
+            }
+
+            const wrapper = document.getElementById('wrapper-todos-faltantes');
+            const label = document.getElementById('lbl-cant-faltantes');
+            const box = document.getElementById('box-todos-faltantes');
+
+            if (faltantes.length === 0) {
+                label.innerText = "¡Completado!";
+                box.innerHTML = "<span style='color: var(--tengo-color); font-weight: 800;'>🎉 ¡Impecable! No te falta ninguna figurita en todo el álbum.</span>";
+            } else {
+                label.innerText = `Faltantes en el álbum (${faltantes.length}):`;
+                box.innerHTML = `<span id="text-faltantes-completo" style="font-size: 13px; letter-spacing: 0.3px;">${faltantes.join(', ')}</span>`;
+            }
+
+            wrapper.style.display = 'block';
+            wrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function copiarFaltantesAlPortapapeles() {
+            const textSpan = document.getElementById('text-faltantes-completo');
+            if (!textSpan) {
+                mostrarNotificacion("No hay ninguna figurita para copiar.");
+                return;
+            }
+
+            // Fallback de copiado seguro en entornos con restricciones (Iframes)
+            const tempInput = document.createElement('textarea');
+            tempInput.value = textSpan.innerText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            
+            try {
+                const copiado = document.execCommand('copy');
+                if (copiado) {
+                    mostrarNotificacion("📋 ¡Lista de faltantes copiada al portapapeles!");
+                } else {
+                    mostrarNotificacion("Error al intentar copiar.");
+                }
+            } catch (err) {
+                mostrarNotificacion("Tu navegador no soporta el copiado automático.");
+            }
+            
+            document.body.removeChild(tempInput);
         }
 
         /* --- STREAMING_CHUNK: Implementando la lógica del analizador de listas de faltantes por comas --- */
