@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Álbum Mundial 2026 - Oficial 980</title>
+    <title>Álbum Mundial 2026</title>
     <style>
         :root {
             --primary: #800020; /* Vino tinto mundialista */
@@ -690,6 +690,12 @@
                     <strong>Instrucciones:</strong> Pegá los códigos de las figuritas que a tu amigo <strong>le faltan</strong>. El sistema las comparará con tus <strong>repetidas</strong> y te listará exactamente las que le podés ofrecer.
                 </div>
 
+				<div class="instruction-card" style="border-left-color: var(--repetida-color); background: rgba(245, 158, 11, 0.05);">
+					<strong style="color: var(--repetida-color);">🎁 Mis Figuritas Repetidas:</strong>
+					<button class="btn-quick" style="margin-top: 8px; width: 100%;" onclick="mostrarMisRepetidas()">Ver mis repetidas disponibles</button>
+					<div id="box-mis-repetidas" class="result-box" style="display: none; margin-top: 10px; font-family: monospace; font-size: 12px;"></div>
+				</div>
+
                 <div class="input-group">
                     <label class="input-label" for="txt-analizar-amigo">Pegar Faltantes de tu Amigo:</label>
                     <textarea id="txt-analizar-amigo" class="input-textarea" placeholder="Ej: MEX1, MEX3, FWC2, ARG10"></textarea>
@@ -969,6 +975,27 @@
             }
             return chunk;
         }
+
+		function mostrarMisRepetidas() {
+			const box = document.getElementById('box-mis-repetidas');
+			const repetidas = [];
+
+			// Recorremos el inventario buscando cantidades > 1
+			for (const key in inventario) {
+				if (inventario[key] > 1) {
+					// Guardamos el código y cuántas repetidas tengo (cantidad - 1)
+					repetidas.push(`${key} (+${inventario[key] - 1})`);
+				}
+			}
+
+			if (repetidas.length === 0) {
+				box.innerHTML = "No tenés figuritas repetidas actualmente.";
+			} else {
+				box.innerHTML = "<strong>Cromos disponibles para cambiar:</strong><br>" + repetidas.join(', ');
+			}
+			
+			box.style.display = 'block';
+		}
 
         function alterarCantidadSticker(key, delta) {
             let cant = inventario[key] || 0;
