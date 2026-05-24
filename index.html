@@ -736,13 +736,22 @@
                     <button class="btn-success" onclick="exportarArchivoJSON()">Descargar Archivo de Respaldos (.json)</button>
                 </div>
 
-                <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 10px 0;">
+                <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 15px 0;">
 
                 <div class="input-group">
                     <label class="input-label">Importar datos desde archivo</label>
                     <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">Seleccioná un archivo .json guardado previamente. <strong>Nota: Esto sobrescribirá tus datos locales actuales.</strong></p>
                     <input type="file" id="file-import" accept=".json" style="padding: 10px; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 14px; background: #fff;">
                     <button class="btn-primary" style="background-color: var(--accent); color: #000; font-weight: 800; margin-top: 10px;" onclick="importarArchivoJSON()">Importar Archivo Cargado</button>
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 15px 0;">
+
+                <div class="input-group">
+                    <label class="input-label">O pegar texto plano JSON</label>
+                    <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">Pegá el contenido de tu copia de seguridad JSON directamente acá:</p>
+                    <textarea id="txt-import-json" class="input-textarea" placeholder="Pegá tu código JSON de copia de seguridad acá..." style="height: 120px; font-family: monospace;"></textarea>
+                    <button class="btn-primary" style="background-color: var(--accent); color: #000; font-weight: 800; margin-top: 10px;" onclick="importarTextoJSON()">Importar desde Texto Plano</button>
                 </div>
             </div>
         </section>
@@ -1376,6 +1385,46 @@
             };
 
             lector.readAsText(archivo);
+        }
+
+        function importarTextoJSON() {
+            const txt = document.getElementById('txt-import-json').value.trim();
+            if (!txt) {
+                abrirModalConfirmacion(
+                    "Error de Importación",
+                    "Asegurate de pegar el texto JSON antes de hacer click en importar.",
+                    () => {}
+                );
+                return;
+            }
+            try {
+                const datosImportados = JSON.parse(txt);
+                if (typeof datosImportados === 'object' && datosImportados !== null) {
+                    if (datosImportados["MEX1"] !== undefined || datosImportados["FWC1"] !== undefined) {
+                        inventario = datosImportados;
+                        validarEstructuraInventario(); // Limpia y valida la estructura
+                        renderizarSeccionSeleccionada();
+                        actualizarContadoresGenerales();
+                        mostrarNotificacion("¡Álbum restaurado con éxito desde texto plano!");
+                        document.getElementById('txt-import-json').value = '';
+                    } else {
+                        abrirModalConfirmacion(
+                            "Datos No Válidos",
+                            "El texto JSON pegado no posee el formato de datos del Álbum Mundial 2026.",
+                            () => {}
+                        );
+                    }
+                } else {
+                    throw new Error("Formato inválido.");
+                }
+            } catch (err) {
+                console.error(err);
+                abrirModalConfirmacion(
+                    "Error de Lectura",
+                    "No se pudo procesar el texto. Comprobá que sea un JSON de respaldo válido.",
+                    () => {}
+                );
+            }
         }
     </script>
 </body>
